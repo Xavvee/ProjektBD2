@@ -1,164 +1,173 @@
-const MongoClient = require('dbdata/mongodb').MongoClient;
-const uri = "mongodb://username:password@localhost:27017/?authMechanism=DEFAULT";
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb://default:default@localhost:27017/db_project";
 
+console.log("Attempting to connect to MongoDB");
 
-MongoClient.connect(uri, function(err, client) {
-   if (err) {
-      console.error('An error occurred connecting to MongoDB: ', err);
-      return;
-   }
+(async () => {
+    let client;
+    try {
+        client = await MongoClient.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
-   const db = client.db("db_project");
+        console.log("Connected to MongoDB");
 
-   // Employees collection
-   db.createCollection("Employees", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: [
-               "employeeId",
-               "employeeType",
-               "firstName",
-               "lastName",
-               "datOfBirth",
-               "email",
-               "phone",
-               "registerDate",
-            ],
-            properties: {
-               employeeId: { bsonType: "int" },
-               employeeType: { bsonType: "string" },
-               firstName: { bsonType: "string" },
-               lastName: { bsonType: "string" },
-               datOfBirth: { bsonType: "date" },
-               email: { bsonType: "string" },
-               phone: { bsonType: "string" },
-               registerDate: { bsonType: "date" },
+        const db = client.db("db_project");
+        console.log("Creating collections...");
+
+        // Employees collection
+        await db.createCollection("Employees", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: [
+                        "employeeId",
+                        "employeeType",
+                        "firstName",
+                        "lastName",
+                        "datOfBirth",
+                        "email",
+                        "phone",
+                        "registerDate",
+                    ],
+                    properties: {
+                        employeeId: {bsonType: "int"},
+                        employeeType: {bsonType: "string"},
+                        firstName: {bsonType: "string"},
+                        lastName: {bsonType: "string"},
+                        datOfBirth: {bsonType: "date"},
+                        email: {bsonType: "string"},
+                        phone: {bsonType: "string"},
+                        registerDate: {bsonType: "date"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Clients collection
-   db.createCollection("Clients", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: [
-               "userId",
-               "firstName",
-               "lastName",
-               "datOfBirth",
-               "email",
-               "phone",
-               "address",
-               "registerDate",
-            ],
-            properties: {
-               userId: { bsonType: "int" },
-               firstName: { bsonType: "string" },
-               lastName: { bsonType: "string" },
-               datOfBirth: { bsonType: "date" },
-               email: { bsonType: "string" },
-               phone: { bsonType: "string" },
-               address: { bsonType: "string" },
-               registerDate: { bsonType: "date" },
+        // Clients collection
+        await db.createCollection("Clients", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: [
+                        "userId",
+                        "firstName",
+                        "lastName",
+                        "datOfBirth",
+                        "email",
+                        "phone",
+                        "address",
+                        "registerDate",
+                    ],
+                    properties: {
+                        userId: {bsonType: "int"},
+                        firstName: {bsonType: "string"},
+                        lastName: {bsonType: "string"},
+                        datOfBirth: {bsonType: "date"},
+                        email: {bsonType: "string"},
+                        phone: {bsonType: "string"},
+                        address: {bsonType: "string"},
+                        registerDate: {bsonType: "date"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Games collection
-   db.createCollection("Games", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: ["gameId", "gameType", "capacity", "pricePerHour"],
-            properties: {
-               gameId: { bsonType: "int" },
-               gameType: { bsonType: "string" },
-               capacity: { bsonType: "int" },
-               pricePerHour: { bsonType: "string" },
+        // Games collection
+        await db.createCollection("Games", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: ["gameId", "gameType", "capacity", "pricePerHour"],
+                    properties: {
+                        gameId: {bsonType: "int"},
+                        gameType: {bsonType: "string"},
+                        capacity: {bsonType: "int"},
+                        pricePerHour: {bsonType: "string"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Tables collection
-   db.createCollection("Tables", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: ["tableId", "capacity"],
-            properties: {
-               tableId: { bsonType: "int" },
-               capacity: { bsonType: "int" },
+        // Tables collection
+        await db.createCollection("Tables", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: ["tableId", "capacity"],
+                    properties: {
+                        tableId: {bsonType: "int"},
+                        capacity: {bsonType: "int"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Reservations collection
-   db.createCollection("Reservations", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: [
-               "reservationId",
-               "reservationStatus",
-               "tableId",
-               "gameId",
-               "peopleCount",
-               "startDate",
-               "endDate",
-            ],
-            properties: {
-               reservationId: { bsonType: "int" },
-               reservationStatus: { bsonType: "string" },
-               tableId: { bsonType: "int" },
-               gameId: { bsonType: "int" },
-               peopleCount: { bsonType: "int" },
-               startDate: { bsonType: "date" },
-               endDate: { bsonType: "date" },
+        // Reservations collection
+        await db.createCollection("Reservations", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: [
+                        "reservationId",
+                        "reservationStatus",
+                        "tableId",
+                        "gameId",
+                        "peopleCount",
+                        "startDate",
+                        "endDate",
+                    ],
+                    properties: {
+                        reservationId: {bsonType: "int"},
+                        reservationStatus: {bsonType: "string"},
+                        tableId: {bsonType: "int"},
+                        gameId: {bsonType: "int"},
+                        peopleCount: {bsonType: "int"},
+                        startDate: {bsonType: "date"},
+                        endDate: {bsonType: "date"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Orders collection
-   db.createCollection("Orders", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: ["orderId", "reservationId", "dishes", "orderDate", "finalPrice"],
-            properties: {
-               orderId: { bsonType: "int" },
-               reservationId: { bsonType: "int" },
-               dishes: { bsonType: "array", items: { bsonType: "int" } },
-               orderDate: { bsonType: "date" },
-               finalPrice: { bsonType: "string" },
+        // Orders collection
+        await db.createCollection("Orders", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: ["orderId", "reservationId", "dishes", "orderDate", "finalPrice"],
+                    properties: {
+                        orderId: {bsonType: "int"},
+                        reservationId: {bsonType: "int"},
+                        dishes: {bsonType: "array", items: {bsonType: "int"}},
+                        orderDate: {bsonType: "date"},
+                        finalPrice: {bsonType: "string"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   // Menu collection
-   db.createCollection("Menu", {
-      validator: {
-         $jsonSchema: {
-            bsonType: "object",
-            required: ["dishId", "dishType", "description", "dishPrice"],
-            properties: {
-               dishId: { bsonType: "int" },
-               dishType: { bsonType: "string" },
-               description: { bsonType: "string" },
-               dishPrice: { bsonType: "string" },
+        // Menu collection
+        await db.createCollection("Menu", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: ["dishId", "dishType", "description", "dishPrice"],
+                    properties: {
+                        dishId: {bsonType: "int"},
+                        dishType: {bsonType: "string"},
+                        description: {bsonType: "string"},
+                        dishPrice: {bsonType: "string"},
+                    },
+                },
             },
-         },
-      },
-   });
+        });
 
-   console.log("Collections created!");
-   client.close();
-});
-
+        console.log("Collections created!");
+    } catch (err) {
+        console.error('An error occurred connecting to MongoDB: ', err);
+    } finally {
+        if (client) {
+            await client.close();
+            console.log("Connection to MongoDB closed");
+        }
+    }
+})();
