@@ -1,1 +1,54 @@
-<p>login works!</p>
+<body class="backgroundConf">
+  <app-nav-bar></app-nav-bar>
+  <div class="container">
+    <h1>Log In</h1>
+    <div class="glass">
+      <form #userForm="ngForm">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder=" "
+            required
+            [(ngModel)]="email"
+            name="name"
+            #name="ngModel"
+          />
+          <label for="name">Email</label>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="country"
+            placeholder=" "
+            required
+            [(ngModel)]="password"
+            name="country"
+            #country="ngModel"
+          />
+          <label for="country">Password</label>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-default buttonDefault"
+          [disabled]="!userForm.form.valid"
+          (click)="sendItem(); newUser(); userForm.reset()"
+        >
+          Log in
+        </button>
+      </form>
+    </div>
+    <button
+      type="button"
+      class="btn btn-default buttonBack"
+      [routerLink]="['/register']"
+      routerLinkActive="router-link-active"
+    >
+      Sign up
+    </button>
+  </div>
+</body>
