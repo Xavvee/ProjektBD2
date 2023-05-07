@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  nick='';
+  email='';
+  password='';
+  str='';
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+  
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  sendItem() {
+    this.authService.SignUp(this.email,this.password,this.nick);
   }
 
+  newUser() {
+    this.email='';
+    this.nick='';
+    this.password='';
+  }
 }
