@@ -18,7 +18,7 @@
 }
 
 h1 {
-  color: rgb(6, 116, 226);
+  color: rgb(253, 88, 0);
   font-size: 40px;
 }
 
@@ -83,7 +83,7 @@ input:not(:placeholder-shown) + label {
 }
 
 .buttonDefault {
-  background-color: rgb(6, 116, 226);
+  background-color: rgb(253, 88, 0);
   border: 2px solid white;
   color: white;
   margin: 20px;
@@ -94,11 +94,11 @@ input:not(:placeholder-shown) + label {
 }
 
 .buttonDefault:hover {
-  background-color: rgb(10, 103, 196);
+  background-color: rgb(212, 77, 3);
 }
 
 .buttonBack {
-  background-color: rgb(6, 116, 226);
+  background-color: rgb(253, 88, 0);
   text-align: right;
   border: 1px solid white;
   color: white;
@@ -110,5 +110,5 @@ input:not(:placeholder-shown) + label {
 }
 
 .buttonBack:hover {
-  background-color: rgb(10, 103, 196);
+  background-color: rgb(212, 77, 3);
 }

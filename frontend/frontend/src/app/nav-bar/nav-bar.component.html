@@ -1,1 +1,36 @@
-<p>nav-bar works!</p>
+<div class="main">
+    <div class="nav-elements">
+        <div class="logo">
+            <img src="assets/img/trippin_logo.png" alt="">
+        </div>
+        <div class="right">
+            <!-- <div class="routing"> -->
+            <div class="nav-link">
+                <a class="link" routerLink="" routerLinkActive="active">Start</a>
+            </div>
+            <div class="nav-link">
+                <a class="link" routerLink="offer" routerLinkActive="active">Oferta</a>
+            </div>
+            <div class="basket">
+                <a class="link" routerLink="basket" routerLinkActive="active">
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                </a>
+            </div>
+            <div class="userInfo nav-link">
+                <a class="link">
+                    <button class="btn dropdown" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                        <span class="material-symbols-outlined">person</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#" routerLink="register" routerLinkActive="active">
+                            Zarejestruj
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" routerLink="login" routerLinkActive="active">
+                            Zaloguj
+                        </a></li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

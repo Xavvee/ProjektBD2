@@ -1,0 +1,12 @@
+html {
+    width: 100%;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+}

@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.full-screen {
+    width: 100%;
+    height: 93vh;
+    background: linear-gradient(90deg,  rgb(255, 163, 0) 0%,  rgb(255, 255, 204) 100%);
+    animation-name: fadeIn;
+    animation-duration: 3s;
+    display: flex;
+    justify-content: center;
+}
+
+.about {
+    margin: auto;
+    width: 70%;
+}
+
+.intro {
+    margin: auto;
+    font-size: 70px;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    padding: 5% 0 5% 0;
+}
+
+.w-100 {
+    height: 20rem;
+    border-radius: 40px;
+}
+
+
+h2 {
+    padding: 2%;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
