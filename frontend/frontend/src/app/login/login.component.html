@@ -3,41 +3,33 @@
   <div class="container">
     <h1>Log In</h1>
     <div class="glass">
-      <form #userForm="ngForm">
+      <form [formGroup]="loginForm">
         <div class="form-group">
           <input
-            type="text"
+            type="email"
             class="form-control"
-            id="name"
+            id="email"
             placeholder=" "
-            required
-            [(ngModel)]="email"
-            name="name"
-            #name="ngModel"
-          />
-          <label for="name">Email</label>
+            formControlName="email"/>
+          <label for="email">Email</label>
         </div>
 
         <div class="form-group">
           <input
             type="password"
             class="form-control"
-            id="country"
+            id="password"
             placeholder=" "
-            required
-            [(ngModel)]="password"
-            name="country"
-            #country="ngModel"
+            formControlName="password"
           />
-          <label for="country">Password</label>
+          <label for="password">Password</label>
         </div>
 
         <button
           type="button"
           class="btn btn-default buttonDefault"
-          [disabled]="!userForm.form.valid"
-          (click)="sendItem(); newUser(); userForm.reset()"
-        >
+          [disabled]="!loginForm.valid"
+          (click)="logIn()">
           Log in
         </button>
       </form>
@@ -46,8 +38,7 @@
       type="button"
       class="btn btn-default buttonBack"
       [routerLink]="['/register']"
-      routerLinkActive="router-link-active"
-    >
+      routerLinkActive="router-link-active">
       Sign up
     </button>
   </div>

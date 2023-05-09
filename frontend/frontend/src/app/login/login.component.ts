@@ -1,5 +1,7 @@
 import { AuthService } from '../auth.service';
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,19 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  email = '';
-  password = '';
-  str = '';
 
-  constructor(private authService: AuthService) {}
-  ngOnInit(): void {}
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router) {}
 
-  sendItem() {
-    this.authService.SignIn(this.email, this.password);
+  loginForm!: FormGroup
+  email!: string
+  password!: string
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group ({
+      email: [''],
+      password: ['']
+    })
+  }
+
+  logIn() {
+    this.newUser()
+    this.authService.SignIn(this.email, this.password)
   }
 
   newUser() {
-    this.email = '';
-    this.password = '';
+    this.email = this.loginForm.get('email')!.value
+    this.password = this.loginForm.get('password')!.value
+  }
+
+  reloadAll() {
+    this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['']).then(()=>{
+        window.location.reload
+      })
+    })
   }
 }
