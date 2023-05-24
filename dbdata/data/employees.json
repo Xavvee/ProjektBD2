@@ -1,0 +1,52 @@
+[
+  {
+    "employeeId": 1,
+    "employeeType": "Full-time",
+    "firstName": "John",
+    "lastName": "Doe",
+    "datOfBirth": "1990-05-10",
+    "email": "john.doe@example.com",
+    "phone": "123456789",
+    "registerDate": "2022-01-15"
+  },
+  {
+    "employeeId": 2,
+    "employeeType": "Part-time",
+    "firstName": "Emma",
+    "lastName": "Smith",
+    "datOfBirth": "1992-08-22",
+    "email": "emma.smith@example.com",
+    "phone": "987654321",
+    "registerDate": "2022-03-05"
+  },
+  {
+    "employeeId": 3,
+    "employeeType": "Intern",
+    "firstName": "Michael",
+    "lastName": "Johnson",
+    "datOfBirth": "1995-11-30",
+    "email": "michael.johnson@example.com",
+    "phone": "456123789",
+    "registerDate": "2022-06-20"
+  },
+  {
+    "employeeId": 4,
+    "employeeType": "Temporary",
+    "firstName": "Sophia",
+    "lastName": "Brown",
+    "datOfBirth": "1991-02-18",
+    "email": "sophia.brown@example.com",
+    "phone": "789123456",
+    "registerDate": "2022-09-10"
+  },
+  {
+    "employeeId": 5,
+    "employeeType": "Consultant",
+    "firstName": "David",
+    "lastName": "Wilson",
+    "datOfBirth": "1988-07-03",
+    "email": "david.wilson@example.com",
+    "phone": "321654987",
+    "registerDate": "2022-12-01"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "dishId": 1,
+    "dishType": "Main Course",
+    "description": "Grilled Salmon with Lemon Sauce",
+    "dishPrice": "25.00"
+  },
+  {
+    "dishId": 2,
+    "dishType": "Appetizer",
+    "description": "Caprese Salad",
+    "dishPrice": "15.50"
+  },
+  {
+    "dishId": 3,
+    "dishType": "Dessert",
+    "description": "Chocolate Brownie",
+    "dishPrice": "10.00"
+  },
+  {
+    "dishId": 4,
+    "dishType": "Main Course",
+    "description": "Grilled Chicken with Mushroom Sauce",
+    "dishPrice": "19.50"
+  },
+  {
+    "dishId": 5,
+    "dishType": "Beverage",
+    "description": "Fresh Orange Juice",
+    "dishPrice": "7.00"
+  }
+]

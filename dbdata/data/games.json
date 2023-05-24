@@ -1,0 +1,54 @@
+[
+    {
+        "gameId": 1,
+        "gameType": "Pool",
+        "capacity": 4,
+        "pricePerHour": "10.00",
+        "tables": [
+        {
+            "tableId": 1,
+            "capacity": 2
+        },
+        {
+            "tableId": 2,
+            "capacity": 4
+        }
+        ]
+    },
+    {
+        "gameId": 2,
+        "gameType": "Darts",
+        "capacity": 10,
+        "pricePerHour": "8.50",
+        "tables": [
+          {
+            "tableId": 3,
+            "capacity": 10
+          },
+          {
+            "tableId": 4,
+            "capacity": 5
+          },
+          {
+            "tableId": 5,
+            "capacity": 10
+          }
+        ]
+      },
+      {
+        "gameId": 3,
+        "gameType": "Foosball",
+        "capacity": 4,
+        "pricePerHour": "12.00",
+        "tables": [
+          {
+            "tableId": 6,
+            "capacity": 4
+          },
+          {
+            "tableId": 7,
+            "capacity": 2
+          }
+        ]
+      }
+]
