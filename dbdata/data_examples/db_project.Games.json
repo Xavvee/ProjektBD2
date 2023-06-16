@@ -1,0 +1,88 @@
+[{
+  "_id": {
+    "$oid": "648c4fe533baa7342d60cfab"
+  },
+  "gameId": 1,
+  "gameType": "Bowling",
+  "capacity": 20,
+  "pricePerHour": "20",
+  "tables": [
+    {
+      "tableId": 1,
+      "capacity": 5
+    },
+    {
+      "tableId": 2,
+      "capacity": 5
+    },
+    {
+      "tableId": 3,
+      "capacity": 5
+    },
+    {
+      "tableId": 4,
+      "capacity": 5
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c509e33baa7342d60cfb3"
+  },
+  "gameId": 2,
+  "gameType": "Pool",
+  "capacity": 16,
+  "pricePerHour": "15",
+  "tables": [
+    {
+      "tableId": 5,
+      "capacity": 4
+    },
+    {
+      "tableId": 6,
+      "capacity": 4
+    },
+    {
+      "tableId": 7,
+      "capacity": 4
+    },
+    {
+      "tableId": 8,
+      "capacity": 4
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c536d33baa7342d60cfc9"
+  },
+  "gameId": 3,
+  "gameType": "Darts",
+  "capacity": 2,
+  "pricePerHour": "10",
+  "tables": [
+    {
+      "tableId": 6,
+      "capacity": 2
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c536d33baa7342d60cfca"
+  },
+  "gameId": 4,
+  "gameType": "Pool",
+  "capacity": 4,
+  "pricePerHour": "15",
+  "tables": [
+    {
+      "tableId": 7,
+      "capacity": 4
+    },
+    {
+      "tableId": 8,
+      "capacity": 4
+    }
+  ]
+}]

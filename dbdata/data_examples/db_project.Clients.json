@@ -1,0 +1,216 @@
+[{
+  "_id": {
+    "$oid": "648c517833baa7342d60cfb8"
+  },
+  "userId": 1,
+  "firstName": "John",
+  "lastName": "Doe",
+  "dateOfBirth": "1990-01-01",
+  "email": "john.doe@example.com",
+  "phone": "1234567890",
+  "address": "123 Main Street",
+  "registerDate": "2023-01-01",
+  "reservations": [
+    {
+      "reservationId": 1,
+      "reservationStatus": "Confirmed",
+      "peopleCount": 2,
+      "startDate": "2023-02-01",
+      "endDate": "2023-02-02",
+      "games": [
+        {
+          "gameId": 1,
+          "gameType": "Bowling",
+          "capacity": 10,
+          "pricePerHour": "20",
+          "tables": [
+            {
+              "tableId": 1,
+              "capacity": 5
+            }
+          ]
+        }
+      ],
+      "orders": [
+        {
+          "orderId": 1,
+          "dishes": [
+            1,
+            2
+          ],
+          "orderDate": "2023-02-01",
+          "finalPrice": "30"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c517f33baa7342d60cfb9"
+  },
+  "userId": 2,
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "dateOfBirth": "1992-03-12",
+  "email": "alice.smith@example.com",
+  "phone": "5555555555",
+  "address": "456 Broadway",
+  "registerDate": "2023-03-01",
+  "reservations": [
+    {
+      "reservationId": 2,
+      "reservationStatus": "Pending",
+      "peopleCount": 4,
+      "startDate": "2023-04-01",
+      "endDate": "2023-04-02",
+      "games": [
+        {
+          "gameId": 2,
+          "gameType": "Pool",
+          "capacity": 8,
+          "pricePerHour": "15",
+          "tables": [
+            {
+              "tableId": 2,
+              "capacity": 4
+            }
+          ]
+        }
+      ],
+      "orders": [
+        {
+          "orderId": 2,
+          "dishes": [
+            3,
+            4
+          ],
+          "orderDate": "2023-04-01",
+          "finalPrice": "45"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c521533baa7342d60cfbb"
+  },
+  "userId": 3,
+  "firstName": "Charlie",
+  "lastName": "Brown",
+  "dateOfBirth": "1988-06-15",
+  "email": "charlie.brown@example.com",
+  "phone": "6666666666",
+  "address": "789 Main St",
+  "registerDate": "2023-03-03",
+  "reservations": [
+    {
+      "reservationId": 3,
+      "reservationStatus": "Confirmed",
+      "peopleCount": 2,
+      "startDate": "2023-04-15",
+      "endDate": "2023-04-16",
+      "games": [
+        {
+          "gameId": 3,
+          "gameType": "Ping Pong",
+          "capacity": 2,
+          "pricePerHour": "10",
+          "tables": [
+            {
+              "tableId": 3,
+              "capacity": 2
+            }
+          ]
+        }
+      ],
+      "orders": [
+        {
+          "orderId": 3,
+          "dishes": [
+            5,
+            6
+          ],
+          "orderDate": "2023-04-15",
+          "finalPrice": "30"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c521533baa7342d60cfbc"
+  },
+  "userId": 4,
+  "firstName": "David",
+  "lastName": "Miller",
+  "dateOfBirth": "1990-09-20",
+  "email": "david.miller@example.com",
+  "phone": "7777777777",
+  "address": "321 Oak St",
+  "registerDate": "2023-03-05",
+  "reservations": [
+    {
+      "reservationId": 4,
+      "reservationStatus": "Completed",
+      "peopleCount": 3,
+      "startDate": "2023-05-10",
+      "endDate": "2023-05-11",
+      "games": [
+        {
+          "gameId": 4,
+          "gameType": "Pool",
+          "capacity": 6,
+          "pricePerHour": "12",
+          "tables": [
+            {
+              "tableId": 4,
+              "capacity": 3
+            }
+          ]
+        }
+      ],
+      "orders": [
+        {
+          "orderId": 4,
+          "dishes": [
+            7,
+            8
+          ],
+          "orderDate": "2023-05-10",
+          "finalPrice": "40"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648c533833baa7342d60cfc5"
+  },
+  "userId": 5,
+  "firstName": "Sarah",
+  "lastName": "Connor",
+  "dateOfBirth": "1990-12-31",
+  "email": "sarah.connor@example.com",
+  "phone": "123-456-7890",
+  "address": "123 Main St, Anytown, USA",
+  "registerDate": "2023-06-01",
+  "reservations": []
+},
+{
+  "_id": {
+    "$oid": "648c533833baa7342d60cfc6"
+  },
+  "userId": 6,
+  "firstName": "James",
+  "lastName": "Bond",
+  "dateOfBirth": "1980-01-01",
+  "email": "james.bond@example.com",
+  "phone": "007-007-007",
+  "address": "Secret Location, UK",
+  "registerDate": "2023-06-02",
+  "reservations": []
+}]
