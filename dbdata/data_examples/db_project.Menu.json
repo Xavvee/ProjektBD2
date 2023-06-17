@@ -1,54 +1,56 @@
-[{
-  "_id": {
-    "$oid": "648c508933baa7342d60cfaf"
+[
+  {
+    "_id": {
+      "$oid": "648c508933baa7342d60cfaf"
+    },
+    "dishId": "8b231755-8c29-4e3d-94c5-67c8c56b049c",
+    "dishType": "Appetizer",
+    "description": "Chicken Wings",
+    "dishPrice": "10"
   },
-  "dishId": "8b231755-8c29-4e3d-94c5-67c8c56b049c",
-  "dishType": "Appetizer",
-  "description": "Chicken Wings",
-  "dishPrice": "10"
-},
-{
-  "_id": {
-    "$oid": "648c508d33baa7342d60cfb0"
+  {
+    "_id": {
+      "$oid": "648c508d33baa7342d60cfb0"
+    },
+    "dishId": "c7a5c4ef-2445-4536-8bc3-1f9b2be1d97f",
+    "dishType": "Main Course",
+    "description": "Steak with fries",
+    "dishPrice": "20"
   },
-  "dishId": "c7a5c4ef-2445-4536-8bc3-1f9b2be1d97f",
-  "dishType": "Main Course",
-  "description": "Steak with fries",
-  "dishPrice": "20"
-},
-{
-  "_id": {
-    "$oid": "648c509533baa7342d60cfb1"
+  {
+    "_id": {
+      "$oid": "648c509533baa7342d60cfb1"
+    },
+    "dishId": "9645a431-2965-4767-bc5e-d66267ef72f4",
+    "dishType": "Appetizer",
+    "description": "Fried Calamari",
+    "dishPrice": "12"
   },
-  "dishId": "9645a431-2965-4767-bc5e-d66267ef72f4",
-  "dishType": "Appetizer",
-  "description": "Fried Calamari",
-  "dishPrice": "12"
-},
-{
-  "_id": {
-    "$oid": "648c509933baa7342d60cfb2"
+  {
+    "_id": {
+      "$oid": "648c509933baa7342d60cfb2"
+    },
+    "dishId": "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
+    "dishType": "Main Course",
+    "description": "Grilled Salmon with vegetables",
+    "dishPrice": "25"
   },
-  "dishId": "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
-  "dishType": "Main Course",
-  "description": "Grilled Salmon with vegetables",
-  "dishPrice": "25"
-},
-{
-  "_id": {
-    "$oid": "648c538433baa7342d60cfcb"
+  {
+    "_id": {
+      "$oid": "648c538433baa7342d60cfcb"
+    },
+    "dishId": "04230a1f-9e02-486b-a73f-df79b6a2e49c",
+    "dishType": "Vegetarian",
+    "description": "Vegetable Stir Fry",
+    "dishPrice": "12"
   },
-  "dishId": "04230a1f-9e02-486b-a73f-df79b6a2e49c",
-  "dishType": "Vegetarian",
-  "description": "Vegetable Stir Fry",
-  "dishPrice": "12"
-},
-{
-  "_id": {
-    "$oid": "648c538433baa7342d60cfcc"
-  },
-  "dishId": "16dd7f11-209d-4f94-97cc-9eac5a2da136",
-  "dishType": "Non-Vegetarian",
-  "description": "Grilled Chicken",
-  "dishPrice": "18"
-}]
+  {
+    "_id": {
+      "$oid": "648c538433baa7342d60cfcc"
+    },
+    "dishId": "16dd7f11-209d-4f94-97cc-9eac5a2da136",
+    "dishType": "Non-Vegetarian",
+    "description": "Grilled Chicken",
+    "dishPrice": "18"
+  }
+]
