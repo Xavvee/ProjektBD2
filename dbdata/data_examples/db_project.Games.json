@@ -8,19 +8,19 @@
   "pricePerHour": "20",
   "tables": [
     {
-      "tableId": 1,
+      "tableId": "1",
       "capacity": 5
     },
     {
-      "tableId": 2,
+      "tableId": "2",
       "capacity": 5
     },
     {
-      "tableId": 3,
+      "tableId": "3",
       "capacity": 5
     },
     {
-      "tableId": 4,
+      "tableId": "4",
       "capacity": 5
     }
   ]
@@ -35,19 +35,19 @@
   "pricePerHour": "15",
   "tables": [
     {
-      "tableId": 5,
+      "tableId": "1",
       "capacity": 4
     },
     {
-      "tableId": 6,
+      "tableId": "2",
       "capacity": 4
     },
     {
-      "tableId": 7,
+      "tableId": "3",
       "capacity": 4
     },
     {
-      "tableId": 8,
+      "tableId": "4",
       "capacity": 4
     }
   ]
@@ -62,7 +62,7 @@
   "pricePerHour": "10",
   "tables": [
     {
-      "tableId": 6,
+      "tableId": "1",
       "capacity": 2
     }
   ]
@@ -77,11 +77,11 @@
   "pricePerHour": "15",
   "tables": [
     {
-      "tableId": 7,
+      "tableId": "1",
       "capacity": 4
     },
     {
-      "tableId": 8,
+      "tableId": "2",
       "capacity": 4
     }
   ]

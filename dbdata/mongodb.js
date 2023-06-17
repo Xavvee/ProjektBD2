@@ -101,7 +101,7 @@ console.log("Attempting to connect to MongoDB");
                         orderId: { bsonType: "string" },
                         dishes: {
                           bsonType: "array",
-                          items: { bsonType: "int" },
+                          items: { bsonType: "string" },
                         },
                         orderDate: { bsonType: "string" },
                         finalPrice: { bsonType: "string" },
