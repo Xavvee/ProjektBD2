@@ -100,7 +100,8 @@ def find_dish(request):
         data = json.loads(request.body)
         mongo_db = MongoDB()
         dish = mongo_db.find_one('Menu', {'dishId': data['dishId']})
-        return JsonResponse(dish)
+        dish_json = JSONEncoder().encode(dish)
+        return JsonResponse(dish_json, safe=False)
     else:
         return JsonResponse({"error": "Invalid method"})
 
@@ -122,7 +123,8 @@ def find_game(request):
         data = json.loads(request.body)
         mongo_db = MongoDB()
         game = mongo_db.find_one('Games', {'gameId': data['gameId']})
-        return JsonResponse(game)
+        game_json = JSONEncoder().encode(game)
+        return JsonResponse(game_json, safe=False)
     else:
         return JsonResponse({"error": "Invalid method"})
 
@@ -144,7 +146,8 @@ def find_employee(request):
         data = json.loads(request.body)
         mongo_db = MongoDB()
         employee = mongo_db.find_one('Employees', {'employeeId': data['employeeId']})
-        return JsonResponse(employee)
+        employee_json = JSONEncoder().encode(employee)
+        return JsonResponse(employee_json, safe=False)
     else:
         return JsonResponse({"error": "Invalid method"})
 
