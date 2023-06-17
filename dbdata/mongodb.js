@@ -49,6 +49,7 @@ console.log("Attempting to connect to MongoDB");
                                     "peopleCount",
                                     "startDate",
                                     "endDate",
+                                    "orderDate",
                                     "games",
                                 ],
                                 properties: {
@@ -57,6 +58,7 @@ console.log("Attempting to connect to MongoDB");
                                     peopleCount: {bsonType: "int"},
                                     startDate: {bsonType: "date"},
                                     endDate: {bsonType: "date"},
+                                    orderDate: {bsonType: "date"},
                                     games: {
                                         bsonType: "array",
                                         items: {
@@ -64,23 +66,20 @@ console.log("Attempting to connect to MongoDB");
                                             required: [
                                                 "gameId",
                                                 "gameType",
-                                                "capacity",
                                                 "pricePerHour",
                                                 "tables",
                                             ],
                                             properties: {
                                                 gameId: {bsonType: "string"},
                                                 gameType: {bsonType: "string"},
-                                                capacity: {bsonType: "int"},
                                                 pricePerHour: {bsonType: "string"},
                                                 tables: {
                                                     bsonType: "array",
                                                     items: {
                                                         bsonType: "object",
-                                                        required: ["tableId", "capacity"],
+                                                        required: ["tableId"],
                                                         properties: {
                                                             tableId: {bsonType: "string"},
-                                                            capacity: {bsonType: "int"},
                                                         },
                                                     },
                                                 },
@@ -94,7 +93,6 @@ console.log("Attempting to connect to MongoDB");
                                             required: [
                                                 "orderId",
                                                 "dishes",
-                                                "orderDate",
                                                 "finalPrice",
                                             ],
                                             properties: {
@@ -103,7 +101,6 @@ console.log("Attempting to connect to MongoDB");
                                                     bsonType: "array",
                                                     items: {bsonType: "string"},
                                                 },
-                                                orderDate: {bsonType: "string"},
                                                 finalPrice: {bsonType: "string"},
                                             },
                                         },
