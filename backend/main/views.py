@@ -1,9 +1,8 @@
-from django.shortcuts import render
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from ..utils import MongoDB
-from ..models import Client, Employee, Game, Dish
+from .utils import MongoDB
+from .models import Client, Employee, Game, Dish
 
 
 @csrf_exempt
