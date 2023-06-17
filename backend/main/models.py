@@ -11,7 +11,7 @@ class Client:
         self.email = email
         self.phone = phone
         self.address = address
-        self.registerDate = registerDate if registerDate else datetime.now()
+        self.registerDate = registerDate if registerDate else datetime.now().strftime("%Y-%m-%d")
         self.reservations = reservations
 
 
@@ -24,7 +24,7 @@ class Employee:
         self.dateOfBirth = dateOfBirth
         self.email = email
         self.phone = phone
-        self.registerDate = registerDate if registerDate else datetime.now()
+        self.registerDate = registerDate if registerDate else datetime.now().strftime("%Y-%m-%d")
 
 
 class Game:

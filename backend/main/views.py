@@ -29,8 +29,8 @@ def create_game(request):
         data['gameId'] = str(uuid.uuid4())  # auto-generate gameId
         mongo_db = MongoDB()
         game = Game(**data)
-        game_dict = game.__dict__Games
-        result = mongo_db.insert_one('', game_dict)
+        game_dict = game.__dict__
+        result = mongo_db.insert_one('Games', game_dict)
         return JsonResponse({"inserted_id": str(result)})
     else:
         return JsonResponse({"error": "Invalid method"})
@@ -285,4 +285,3 @@ def create_reservation(request):
         return JsonResponse({"message": "Reservation created successfully"})
     else:
         return JsonResponse({"error": "Invalid method"})
-
