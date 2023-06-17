@@ -99,7 +99,16 @@ console.log("Attempting to connect to MongoDB");
                                                 orderId: {bsonType: "string"},
                                                 dishes: {
                                                     bsonType: "array",
-                                                    items: {bsonType: "string"},
+                                                    items: {
+                                                        bsonType: "object",
+                                                        required: ["dishId", "dishType", "description", "dishPrice"],
+                                                        properties: {
+                                                            dishId: {bsonType: "string"},
+                                                            dishType: {bsonType: "string"},
+                                                            description: {bsonType: "string"},
+                                                            dishPrice: {bsonType: "string"},
+                                                        },
+                                                    },
                                                 },
                                                 finalPrice: {bsonType: "string"},
                                             },

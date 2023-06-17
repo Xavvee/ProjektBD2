@@ -288,6 +288,7 @@ def find_all_dishes(request):
     else:
         return JsonResponse({"error": "Invalid method"})
 
+
 @csrf_exempt
 def create_reservation(request):
     if request.method == 'POST':
@@ -307,7 +308,7 @@ def create_reservation(request):
         start_date = datetime.strptime(data['startDate'], '%Y-%m-%dT%H:%M:%S.%f%z')
         end_date = datetime.strptime(data['endDate'], '%Y-%m-%dT%H:%M:%S.%f%z')
         order_date = datetime.now()
-        final_price = get_price_from_dishes(data['dishes'], mongo_db)
+        final_price, dish_list = get_price_and_dishes(data['dishes'], mongo_db)
 
         # create a minimal game object with only required fields
         minimal_game = {
@@ -321,7 +322,7 @@ def create_reservation(request):
         reservation = Reservation(reservationId=str(uuid.uuid4()), reservationStatus='Pending',
                                   peopleCount=data['peopleCount'], startDate=start_date, endDate=end_date,
                                   orderDate=order_date, games=[minimal_game], orders=[
-                {'orderId': str(uuid.uuid4()), 'dishes': data['dishes'], 'finalPrice': final_price}])
+                {'orderId': str(uuid.uuid4()), 'dishes': dish_list, 'finalPrice': final_price}])
 
         reservation_dict = reservation.__dict__
 
@@ -340,19 +341,20 @@ def create_reservation(request):
         return JsonResponse({"error": "Invalid method"})
 
 
-def get_price_from_dishes(dishes, mongo_db):
+def get_price_and_dishes(dishes, mongo_db):
     total_price = 0.0
-
+    dish_list = []
     for dishId in dishes:
         # find the dish in the Menu collection
         dish = mongo_db.find_one('Menu', {'dishId': dishId})
+        dish_list.append(dish)
 
         if dish is not None:
             # add the dish price to the total price
             total_price += float(dish['dishPrice'])
 
     # return the total price as a string
-    return str(total_price)
+    return str(total_price), dish_list
 
 
 @csrf_exempt
@@ -406,3 +408,27 @@ def handle_cancellation(reservation):
         mongo_db.update_one('Games', {'gameId': game['gameId']}, {'tables': game_document['tables']})
 
     return JsonResponse({"message": "Reserved dates removed"})
+
+
+@csrf_exempt
+def filter_menu_by_dish_type(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        dish_type = data.get('dishType')
+
+        if dish_type:
+            # create a new MongoDB connection
+            mongo_db = MongoDB()
+
+            # Query the dishes from the MongoDB Menu collection
+            dishes = mongo_db.find('Menu', {'dishType': dish_type})
+
+            # Convert the cursor into a list of dictionaries
+            dishes_list = list(dishes)
+
+            return JsonResponse({"dishes": dishes_list})
+        else:
+            return JsonResponse({"error": "No dishType provided"}, status=400)
+
+    else:
+        return JsonResponse({"error": "Invalid method"}, status=400)
