@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import create_client, create_dish, create_game, create_employee, find_client, delete_client, find_dish, \
     delete_dish, find_game, delete_game, find_employee, delete_employee, update_client, update_dish, update_game, \
-    update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes, create_reservation
+    update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes, create_reservation, \
+    add_table_to_game, update_reservation
 
 urlpatterns = [
     path('create_client/', create_client, name='create_client'),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('find_all_games/', find_all_games, name='find_all_games'),
     path('find_all_employees/', find_all_employees, name='find_all_employees'),
     path('find_all_dishes/', find_all_dishes, name='find_all_dishes'),
+    path('add_table_to_game/', add_table_to_game, name='add_table_to_game'),
+    path('update_reservation/', update_reservation, name='update_reservation'),
 ]
