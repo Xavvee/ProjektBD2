@@ -76,8 +76,7 @@ def find_client(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        client_id = ObjectId(data['_id'])
-        client = mongo_db.find_one('Clients', {'_id': client_id})
+        client = mongo_db.find_one('Clients', {'userId': data['userId']})
         client_json = JSONEncoder().encode(client)
         return JsonResponse(client_json, safe=False)
     else:
