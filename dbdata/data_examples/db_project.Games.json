@@ -24,15 +24,18 @@
       },
       {
         "tableId": "2",
-        "capacity": 5
+        "capacity": 5,
+        "reservedDates": []
       },
       {
         "tableId": "3",
-        "capacity": 5
+        "capacity": 5,
+        "reservedDates": []
       },
       {
         "tableId": "4",
-        "capacity": 5
+        "capacity": 5,
+        "reservedDates": []
       }
     ]
   },
@@ -47,7 +50,8 @@
     "tables": [
       {
         "tableId": "1",
-        "capacity": 4
+        "capacity": 4,
+        "reservedDates": []
       },
       {
         "tableId": "2",
@@ -65,11 +69,13 @@
       },
       {
         "tableId": "3",
-        "capacity": 4
+        "capacity": 4,
+        "reservedDates": []
       },
       {
         "tableId": "4",
-        "capacity": 4
+        "capacity": 4,
+        "reservedDates": []
       }
     ]
   },

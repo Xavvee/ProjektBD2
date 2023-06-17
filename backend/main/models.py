@@ -79,11 +79,12 @@ class Dish:
 
 
 class Reservation:
-    def __init__(self, reservationId, reservationStatus, peopleCount, startDate, endDate, games, orders):
+    def __init__(self, reservationId, reservationStatus, peopleCount, startDate, endDate, orderDate, games, orders):
         self.reservationId = reservationId
         self.reservationStatus = reservationStatus
         self.peopleCount = peopleCount
         self.startDate = startDate
         self.endDate = endDate
+        self.orderDate = orderDate
         self.games = games
         self.orders = orders

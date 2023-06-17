@@ -29,12 +29,10 @@
           {
             "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
             "gameType": "Bowling",
-            "capacity": 10,
             "pricePerHour": "20",
             "tables": [
               {
-                "tableId": "1",
-                "capacity": 5
+                "tableId": "1"
               }
             ]
           }
@@ -82,12 +80,10 @@
           {
             "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
             "gameType": "Pool",
-            "capacity": 8,
             "pricePerHour": "15",
             "tables": [
               {
-                "tableId": "2",
-                "capacity": 4
+                "tableId": "2"
               }
             ]
           }
@@ -135,12 +131,10 @@
           {
             "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
             "gameType": "Ping Pong",
-            "capacity": 2,
             "pricePerHour": "10",
             "tables": [
               {
-                "tableId": "1",
-                "capacity": 2
+                "tableId": "1"
               }
             ]
           }
@@ -188,12 +182,10 @@
           {
             "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
             "gameType": "Pool",
-            "capacity": 6,
             "pricePerHour": "12",
             "tables": [
               {
-                "tableId": "2",
-                "capacity": 3
+                "tableId": "2"
               }
             ]
           }
