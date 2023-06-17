@@ -22,6 +22,9 @@
         "endDate": {
           "$date": "2023-02-01T20:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-02-01T20:00:00Z"
+        },
         "games": [
           {
             "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
@@ -43,7 +46,6 @@
               "8b231755-8c29-4e3d-94c5-67c8c56b049c",
               "c7a5c4ef-2445-4536-8bc3-1f9b2be1d97f"
             ],
-            "orderDate": "2023-02-01",
             "finalPrice": "30"
           }
         ]
@@ -73,6 +75,9 @@
         "endDate": {
           "$date": "2023-04-01T13:30:00Z"
         },
+        "orderDate": {
+          "$date": "2023-04-01T13:30:00Z"
+        },
         "games": [
           {
             "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
@@ -94,7 +99,6 @@
               "9645a431-2965-4767-bc5e-d66267ef72f4",
               "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64"
             ],
-            "orderDate": "2023-04-01",
             "finalPrice": "45"
           }
         ]
@@ -124,6 +128,9 @@
         "endDate": {
           "$date": "2023-04-16T19:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-04-15T7:00:00Z"
+        },
         "games": [
           {
             "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
@@ -145,7 +152,6 @@
               "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
               "04230a1f-9e02-486b-a73f-df79b6a2e49c"
             ],
-            "orderDate": "2023-04-15",
             "finalPrice": "30"
           }
         ]
@@ -175,6 +181,9 @@
         "endDate": {
           "$date": "2023-05-10T22:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-05-10T12:00:00Z"
+        },
         "games": [
           {
             "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
@@ -196,7 +205,6 @@
               "16dd7f11-209d-4f94-97cc-9eac5a2da136",
               "04230a1f-9e02-486b-a73f-df79b6a2e49c"
             ],
-            "orderDate": "2023-05-10",
             "finalPrice": "40"
           }
         ]

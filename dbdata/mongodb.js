@@ -49,6 +49,7 @@ console.log("Attempting to connect to MongoDB");
                                     "peopleCount",
                                     "startDate",
                                     "endDate",
+                                    "orderDate",
                                     "games",
                                 ],
                                 properties: {
@@ -57,6 +58,7 @@ console.log("Attempting to connect to MongoDB");
                                     peopleCount: {bsonType: "int"},
                                     startDate: {bsonType: "date"},
                                     endDate: {bsonType: "date"},
+                                    orderDate: {bsonType: "date"},
                                     games: {
                                         bsonType: "array",
                                         items: {
@@ -94,7 +96,6 @@ console.log("Attempting to connect to MongoDB");
                                             required: [
                                                 "orderId",
                                                 "dishes",
-                                                "orderDate",
                                                 "finalPrice",
                                             ],
                                             properties: {
@@ -103,7 +104,6 @@ console.log("Attempting to connect to MongoDB");
                                                     bsonType: "array",
                                                     items: {bsonType: "string"},
                                                 },
-                                                orderDate: {bsonType: "string"},
                                                 finalPrice: {bsonType: "string"},
                                             },
                                         },
