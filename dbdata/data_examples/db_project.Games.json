@@ -1,88 +1,131 @@
-[{
-  "_id": {
-    "$oid": "648c4fe533baa7342d60cfab"
+[
+  {
+    "_id": {
+      "$oid": "648c4fe533baa7342d60cfab"
+    },
+    "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
+    "gameType": "Bowling",
+    "capacity": 20,
+    "pricePerHour": "20",
+    "tables": [
+      {
+        "tableId": "1",
+        "capacity": 5,
+        "reservedDates": [
+          {
+            "startDate": {
+              "$date": "2023-02-01T17:00:00Z"
+            },
+            "endDate": {
+              "$date": "2023-02-01T20:00:00Z"
+            }
+          }
+        ]
+      },
+      {
+        "tableId": "2",
+        "capacity": 5
+      },
+      {
+        "tableId": "3",
+        "capacity": 5
+      },
+      {
+        "tableId": "4",
+        "capacity": 5
+      }
+    ]
   },
-  "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
-  "gameType": "Bowling",
-  "capacity": 20,
-  "pricePerHour": "20",
-  "tables": [
-    {
-      "tableId": "1",
-      "capacity": 5
+  {
+    "_id": {
+      "$oid": "648c509e33baa7342d60cfb3"
     },
-    {
-      "tableId": "2",
-      "capacity": 5
-    },
-    {
-      "tableId": "3",
-      "capacity": 5
-    },
-    {
-      "tableId": "4",
-      "capacity": 5
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "648c509e33baa7342d60cfb3"
+    "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
+    "gameType": "Pool",
+    "capacity": 16,
+    "pricePerHour": "15",
+    "tables": [
+      {
+        "tableId": "1",
+        "capacity": 4
+      },
+      {
+        "tableId": "2",
+        "capacity": 4,
+        "reservedDates": [
+          {
+            "startDate": {
+              "$date": "2023-04-01T12:00:00Z"
+            },
+            "endDate": {
+              "$date": "2023-04-01T13:30:00Z"
+            }
+          }
+        ]
+      },
+      {
+        "tableId": "3",
+        "capacity": 4
+      },
+      {
+        "tableId": "4",
+        "capacity": 4
+      }
+    ]
   },
-  "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
-  "gameType": "Pool",
-  "capacity": 16,
-  "pricePerHour": "15",
-  "tables": [
-    {
-      "tableId": "1",
-      "capacity": 4
+  {
+    "_id": {
+      "$oid": "648c536d33baa7342d60cfc9"
     },
-    {
-      "tableId": "2",
-      "capacity": 4
-    },
-    {
-      "tableId": "3",
-      "capacity": 4
-    },
-    {
-      "tableId": "4",
-      "capacity": 4
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "648c536d33baa7342d60cfc9"
+    "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
+    "gameType": "Darts",
+    "capacity": 2,
+    "pricePerHour": "10",
+    "tables": [
+      {
+        "tableId": "1",
+        "capacity": 2,
+        "reservedDates": [
+          {
+            "startDate": {
+              "$date": "2023-04-16T18:00:00Z"
+            },
+            "endDate": {
+              "$date": "2023-04-16T19:00:00Z"
+            }
+          }
+        ]
+      }
+    ]
   },
-  "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
-  "gameType": "Darts",
-  "capacity": 2,
-  "pricePerHour": "10",
-  "tables": [
-    {
-      "tableId": "1",
-      "capacity": 2
-    }
-  ]
-},
-{
-  "_id": {
-    "$oid": "648c536d33baa7342d60cfca"
-  },
-  "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
-  "gameType": "Pool",
-  "capacity": 4,
-  "pricePerHour": "15",
-  "tables": [
-    {
-      "tableId": "1",
-      "capacity": 4
+  {
+    "_id": {
+      "$oid": "648c536d33baa7342d60cfca"
     },
-    {
-      "tableId": "2",
-      "capacity": 4
-    }
-  ]
-}]
+    "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
+    "gameType": "Pool",
+    "capacity": 4,
+    "pricePerHour": "15",
+    "tables": [
+      {
+        "tableId": "1",
+        "capacity": 4
+      },
+      {
+        "tableId": "2",
+        "capacity": 4,
+        "reservedDates": [
+          {
+            "startDate": {
+              "$date": "2023-05-10T20:00:00Z"
+            },
+            "endDate": {
+              "$date": "2023-05-10T22:00:00Z"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
+
