@@ -14,6 +14,17 @@ class Client:
         self.registerDate = registerDate if registerDate else datetime.now().strftime("%Y-%m-%d")
         self.reservations = reservations
 
+    def __init__(self, data):
+        self._id = str(data.get('_id', ''))
+        self.firstName = data.get('firstName', '')
+        self.lastName = data.get('lastName', '')
+        self.dateOfBirth = data.get('dateOfBirth', '')
+        self.email = data.get('email', '')
+        self.phone = data.get('phone', '')
+        self.address = data.get('address', '')
+        self.registerDate = data.get('registerDate', '')
+        self.reservations = data.get('reservations', [])
+
 
 class Employee:
     def __init__(self, employeeId, employeeType, firstName, lastName, dateOfBirth, email, phone, registerDate=None):
@@ -26,6 +37,16 @@ class Employee:
         self.phone = phone
         self.registerDate = registerDate if registerDate else datetime.now().strftime("%Y-%m-%d")
 
+    def __init__(self, data):
+        self._id = str(data.get('_id', ''))
+        self.employeeType = data.get('employeeType', '')
+        self.firstName = data.get('firstName', '')
+        self.lastName = data.get('lastName', '')
+        self.dateOfBirth = data.get('dateOfBirth', '')
+        self.email = data.get('email', '')
+        self.phone = data.get('phone', '')
+        self.registerDate = data.get('registerDate', '')
+
 
 class Game:
     def __init__(self, gameId, gameType, capacity, pricePerHour, tables=[]):
@@ -35,6 +56,13 @@ class Game:
         self.pricePerHour = pricePerHour
         self.tables = tables
 
+    def __init__(self, data):
+        self._id = str(data.get('_id', ''))
+        self.gameType = data.get('gameType', '')
+        self.capacity = data.get('capacity', '')
+        self.pricePerHour = data.get('pricePerHour', '')
+        self.tables = data.get('tables', [])
+
 
 class Dish:
     def __init__(self, dishId, dishType, description, dishPrice):
@@ -42,6 +70,12 @@ class Dish:
         self.dishType = dishType
         self.description = description
         self.dishPrice = dishPrice
+
+    def __init__(self, data):
+        self._id = str(data.get('_id', ''))
+        self.dishType = data.get('dishType', '')
+        self.description = data.get('description', '')
+        self.dishPrice = data.get('dishPrice', '')
 
 
 class Reservation:

@@ -76,11 +76,14 @@ def find_client(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        client = mongo_db.find_one('Clients', {'userId': data['userId']})
-        client_json = JSONEncoder().encode(client)
-        return JsonResponse(client_json, safe=False)
+        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
+        if client_doc:
+            client = Client(client_doc)
+            return JsonResponse(client.__dict__)
+        else:
+            return JsonResponse({"error": "Client not found"}, status=404)
     else:
-        return JsonResponse({"error": "Invalid method"})
+        return JsonResponse({"error": "Invalid method"}, status=405)
 
 
 @csrf_exempt
@@ -99,11 +102,14 @@ def find_dish(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        dish = mongo_db.find_one('Menu', {'dishId': data['dishId']})
-        dish_json = JSONEncoder().encode(dish)
-        return JsonResponse(dish_json, safe=False)
+        dish_doc = mongo_db.find_one('Menu', {'dishId': data['dishId']})
+        if dish_doc:
+            dish = Dish(dish_doc)
+            return JsonResponse(dish.__dict__)
+        else:
+            return JsonResponse({"error": "Dish not found"}, status=404)
     else:
-        return JsonResponse({"error": "Invalid method"})
+        return JsonResponse({"error": "Invalid method"}, status=405)
 
 
 @csrf_exempt
@@ -122,11 +128,15 @@ def find_game(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        game = mongo_db.find_one('Games', {'gameId': data['gameId']})
-        game_json = JSONEncoder().encode(game)
-        return JsonResponse(game_json, safe=False)
+        game_doc = mongo_db.find_one('Games', {'gameId': data['gameId']})
+
+        if game_doc:
+            game = Game(game_doc)
+            return JsonResponse(game.__dict__)
+        else:
+            return JsonResponse({"error": "Game not found"}, status=404)
     else:
-        return JsonResponse({"error": "Invalid method"})
+        return JsonResponse({"error": "Invalid method"}, status=405)
 
 
 @csrf_exempt
@@ -145,11 +155,15 @@ def find_employee(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        employee = mongo_db.find_one('Employees', {'employeeId': data['employeeId']})
-        employee_json = JSONEncoder().encode(employee)
-        return JsonResponse(employee_json, safe=False)
+        employee_doc = mongo_db.find_one('Employees', {'employeeId': data['employeeId']})
+
+        if employee_doc:
+            employee = Employee(employee_doc)
+            return JsonResponse(employee.__dict__)
+        else:
+            return JsonResponse({"error": "Employee not found"}, status=404)
     else:
-        return JsonResponse({"error": "Invalid method"})
+        return JsonResponse({"error": "Invalid method"}, status=405)
 
 
 @csrf_exempt
