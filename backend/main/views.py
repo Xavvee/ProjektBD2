@@ -421,14 +421,10 @@ def filter_menu_by_dish_type(request):
             mongo_db = MongoDB()
 
             # Query the dishes from the MongoDB Menu collection
-            dishes = mongo_db.find('Menu', {'dishType': dish_type})
+            dishes = mongo_db.find_all('Menu', {'dishType': dish_type})
 
-            # Convert the cursor into a list of dictionaries
-            dishes_list = list(dishes)
-
-            return JsonResponse({"dishes": dishes_list})
+            return JsonResponse({"dishes": json.loads(dumps(dishes))})
         else:
             return JsonResponse({"error": "No dishType provided"}, status=400)
-
     else:
         return JsonResponse({"error": "Invalid method"}, status=400)

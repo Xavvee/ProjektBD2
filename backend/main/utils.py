@@ -11,9 +11,9 @@ class MongoDB:
         result = collection.insert_one(data)
         return result.inserted_id
 
-    def find_all(self, collection_name):
+    def find_all(self, collection_name, query={}):
         collection = self.db[collection_name]
-        return collection.find()
+        return collection.find(query)
 
     def find_one(self, collection_name, query):
         collection = self.db[collection_name]
