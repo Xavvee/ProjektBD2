@@ -1,13 +1,14 @@
 from django.urls import path
 from .views import create_client, create_dish, create_game, create_employee, find_client, delete_client, find_dish, \
     delete_dish, find_game, delete_game, find_employee, delete_employee, update_client, update_dish, update_game, \
-    update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes
+    update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes, create_reservation
 
 urlpatterns = [
     path('create_client/', create_client, name='create_client'),
     path('create_dish/', create_dish, name='create_dish'),
     path('create_game/', create_game, name='create_game'),
     path('create_employee/', create_employee, name='create_employee'),
+    path('create_reservation/', create_reservation, name='create_reservation'),
     path('find_client/', find_client, name='find_client'),
     path('delete_client/', delete_client, name='delete_client'),
     path('find_dish/', find_dish, name='find_dish'),

@@ -29,10 +29,9 @@ console.log("Attempting to connect to MongoDB");
             "email",
             "phone",
             "address",
-            // "registerDate",
           ],
           properties: {
-            userId: { bsonType: "int" },
+            userId: { bsonType: "string" },
             firstName: { bsonType: "string" },
             lastName: { bsonType: "string" },
             dateOfBirth: { bsonType: "string" },
@@ -53,7 +52,7 @@ console.log("Attempting to connect to MongoDB");
                   "games",
                 ],
                 properties: {
-                  reservationId: { bsonType: "int" },
+                  reservationId: { bsonType: "string" },
                   reservationStatus: { bsonType: "string" },
                   peopleCount: { bsonType: "int" },
                   startDate: { bsonType: "string" },
@@ -70,7 +69,7 @@ console.log("Attempting to connect to MongoDB");
                         "tables",
                       ],
                       properties: {
-                        gameId: { bsonType: "int" },
+                        gameId: { bsonType: "string" },
                         gameType: { bsonType: "string" },
                         capacity: { bsonType: "int" },
                         pricePerHour: { bsonType: "string" },
@@ -80,7 +79,7 @@ console.log("Attempting to connect to MongoDB");
                             bsonType: "object",
                             required: ["tableId", "capacity"],
                             properties: {
-                              tableId: { bsonType: "int" },
+                              tableId: { bsonType: "string" },
                               capacity: { bsonType: "int" },
                             },
                           },
@@ -99,7 +98,7 @@ console.log("Attempting to connect to MongoDB");
                         "finalPrice",
                       ],
                       properties: {
-                        orderId: { bsonType: "int" },
+                        orderId: { bsonType: "string" },
                         dishes: {
                           bsonType: "array",
                           items: { bsonType: "int" },
@@ -133,7 +132,7 @@ console.log("Attempting to connect to MongoDB");
             "registerDate",
           ],
           properties: {
-            employeeId: { bsonType: "int" },
+            employeeId: { bsonType: "string" },
             employeeType: { bsonType: "string" },
             firstName: { bsonType: "string" },
             lastName: { bsonType: "string" },
@@ -153,7 +152,7 @@ console.log("Attempting to connect to MongoDB");
           bsonType: "object",
           required: ["gameId", "gameType", "capacity", "pricePerHour"],
           properties: {
-            gameId: { bsonType: "int" },
+            gameId: { bsonType: "string" },
             gameType: { bsonType: "string" },
             capacity: { bsonType: "int" },
             pricePerHour: { bsonType: "string" },
@@ -163,7 +162,7 @@ console.log("Attempting to connect to MongoDB");
                 bsonType: "object",
                 required: ["tableId", "capacity"],
                 properties: {
-                  tableId: { bsonType: "int" },
+                  tableId: { bsonType: "string" },
                   capacity: { bsonType: "int" },
                 },
               },
@@ -180,7 +179,7 @@ console.log("Attempting to connect to MongoDB");
           bsonType: "object",
           required: ["dishId", "dishType", "description", "dishPrice"],
           properties: {
-            dishId: { bsonType: "int" },
+            dishId: { bsonType: "string" },
             dishType: { bsonType: "string" },
             description: { bsonType: "string" },
             dishPrice: { bsonType: "string" },

@@ -42,3 +42,14 @@ class Dish:
         self.dishType = dishType
         self.description = description
         self.dishPrice = dishPrice
+
+
+class Reservation:
+    def __init__(self, reservationId, reservationStatus, peopleCount, startDate, endDate, games, orders):
+        self.reservationId = reservationId
+        self.reservationStatus = reservationStatus
+        self.peopleCount = peopleCount
+        self.startDate = startDate
+        self.endDate = endDate
+        self.games = games
+        self.orders = orders

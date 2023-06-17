@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "648c4fe533baa7342d60cfab"
   },
-  "gameId": 1,
+  "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
   "gameType": "Bowling",
   "capacity": 20,
   "pricePerHour": "20",
@@ -29,7 +29,7 @@
   "_id": {
     "$oid": "648c509e33baa7342d60cfb3"
   },
-  "gameId": 2,
+  "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
   "gameType": "Pool",
   "capacity": 16,
   "pricePerHour": "15",
@@ -56,7 +56,7 @@
   "_id": {
     "$oid": "648c536d33baa7342d60cfc9"
   },
-  "gameId": 3,
+  "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
   "gameType": "Darts",
   "capacity": 2,
   "pricePerHour": "10",
@@ -71,7 +71,7 @@
   "_id": {
     "$oid": "648c536d33baa7342d60cfca"
   },
-  "gameId": 4,
+  "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
   "gameType": "Pool",
   "capacity": 4,
   "pricePerHour": "15",

@@ -1,78 +1,80 @@
-[{
-  "_id": {
-    "$oid": "648c511b33baa7342d60cfb6"
+[
+  {
+    "_id": {
+      "$oid": "648c511b33baa7342d60cfb6"
+    },
+    "employeeId": "2b57c003-5e4a-478b-a14a-b5c03a8f72ff",
+    "employeeType": "Waiter",
+    "firstName": "Bob",
+    "lastName": "Johnson",
+    "dateOfBirth": "1987-02-02",
+    "email": "bob.johnson@example.com",
+    "phone": "4444444444",
+    "registerDate": "2023-01-01"
   },
-  "employeeId": 2,
-  "employeeType": "Waiter",
-  "firstName": "Bob",
-  "lastName": "Johnson",
-  "dateOfBirth": "1987-02-02",
-  "email": "bob.johnson@example.com",
-  "phone": "4444444444",
-  "registerDate": "2023-01-01"
-},
-{
-  "_id": {
-    "$oid": "648c518933baa7342d60cfba"
+  {
+    "_id": {
+      "$oid": "648c518933baa7342d60cfba"
+    },
+    "employeeId": "cde5f403-2d59-4698-8b53-47f3317e6a95",
+    "employeeType": "Manager",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "dateOfBirth": "1985-01-01",
+    "email": "jane.doe@example.com",
+    "phone": "0987654321",
+    "registerDate": "2022-01-01"
   },
-  "employeeId": 1,
-  "employeeType": "Manager",
-  "firstName": "Jane",
-  "lastName": "Doe",
-  "dateOfBirth": "1985-01-01",
-  "email": "jane.doe@example.com",
-  "phone": "0987654321",
-  "registerDate": "2022-01-01"
-},
-{
-  "_id": {
-    "$oid": "648c521c33baa7342d60cfbd"
+  {
+    "_id": {
+      "$oid": "648c521c33baa7342d60cfbd"
+    },
+    "employeeId": "b168df75-75b5-4c01-a6cd-33b71a6796ca",
+    "employeeType": "Chef",
+    "firstName": "Eve",
+    "lastName": "Wilson",
+    "dateOfBirth": "1985-01-20",
+    "email": "eve.wilson@example.com",
+    "phone": "8888888888",
+    "registerDate": "2023-01-15"
   },
-  "employeeId": 3,
-  "employeeType": "Chef",
-  "firstName": "Eve",
-  "lastName": "Wilson",
-  "dateOfBirth": "1985-01-20",
-  "email": "eve.wilson@example.com",
-  "phone": "8888888888",
-  "registerDate": "2023-01-15"
-},
-{
-  "_id": {
-    "$oid": "648c521c33baa7342d60cfbe"
+  {
+    "_id": {
+      "$oid": "648c521c33baa7342d60cfbe"
+    },
+    "employeeId": "607ac055-6b07-4aae-bd85-4f96341b4a3f",
+    "employeeType": "Waiter",
+    "firstName": "Frank",
+    "lastName": "Taylor",
+    "dateOfBirth": "1992-08-30",
+    "email": "frank.taylor@example.com",
+    "phone": "9999999999",
+    "registerDate": "2023-02-05"
   },
-  "employeeId": 4,
-  "employeeType": "Waiter",
-  "firstName": "Frank",
-  "lastName": "Taylor",
-  "dateOfBirth": "1992-08-30",
-  "email": "frank.taylor@example.com",
-  "phone": "9999999999",
-  "registerDate": "2023-02-05"
-},
-{
-  "_id": {
-    "$oid": "648c535433baa7342d60cfc7"
+  {
+    "_id": {
+      "$oid": "648c535433baa7342d60cfc7"
+    },
+    "employeeId": "edf5b7e4-f8f9-4a5f-86b6-6a55b3188b17",
+    "employeeType": "Waiter",
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "1992-02-12",
+    "email": "john.doe@example.com",
+    "phone": "111-222-333",
+    "registerDate": "2023-06-03"
   },
-  "employeeId": 5,
-  "employeeType": "Waiter",
-  "firstName": "John",
-  "lastName": "Doe",
-  "dateOfBirth": "1992-02-12",
-  "email": "john.doe@example.com",
-  "phone": "111-222-333",
-  "registerDate": "2023-06-03"
-},
-{
-  "_id": {
-    "$oid": "648c535433baa7342d60cfc8"
-  },
-  "employeeId": 6,
-  "employeeType": "Cook",
-  "firstName": "Jane",
-  "lastName": "Smith",
-  "dateOfBirth": "1990-07-25",
-  "email": "jane.smith@example.com",
-  "phone": "444-555-666",
-  "registerDate": "2023-06-04"
-}]
+  {
+    "_id": {
+      "$oid": "648c535433baa7342d60cfc8"
+    },
+    "employeeId": "f2c10e60-4b5c-4ecf-a0a4-73cf1be1a7fd",
+    "employeeType": "Cook",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "dateOfBirth": "1990-07-25",
+    "email": "jane.smith@example.com",
+    "phone": "444-555-666",
+    "registerDate": "2023-06-04"
+  }
+]
