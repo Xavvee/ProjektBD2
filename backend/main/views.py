@@ -395,6 +395,72 @@ def update_reservation(request):
         return JsonResponse({"error": "Invalid method"})
 
 
+@csrf_exempt
+def find_tables_for_game(gameId):
+    mongo_db = MongoDB()
+    tables = mongo_db.find_one('Games', { 'gameId': gameId })['tables']
+    return tables;
+
+@csrf_exempt
+def check_if_free_date(request):
+    if request.method == 'POST':
+        date_format = '%Y-%m-%dT%H:%M:%SZ'
+        data = json.loads(request.body)
+        startDate = datetime.strptime(data.pop('startDate'), date_format)
+        endDate = datetime.strptime(data.pop('endDate'), date_format)
+        gameId = data.pop('gameId')
+        tables = find_tables_for_game(gameId)
+        for table in tables:
+            if table['reservedDates'] != []:
+                for dates in table['reservedDates']:
+                    if not (dates['startDate'] >= endDate or dates['endDate'] <= startDate):
+                        return JsonResponse({"error": "You can't reserve during this period of time."})
+        return JsonResponse({"message": "This date is free."})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+@csrf_exempt
+def display_tables_for_game(request):
+    if request.method == 'GET':
+        data = json.loads(request.body)
+        gameId = data.pop('gameId')
+        tables = find_tables_for_game(gameId)
+        return JsonResponse({"games": json.loads(dumps(tables))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+    
+@csrf_exempt
+def show_clients_ordered_dishes(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        data = json.loads(request.body)
+        user_Id = data.pop('userId')
+        dishes = mongo_db.find_one('Clients', {'userId': user_Id})['reservations'][0]['orders'][0]['dishes']
+        return JsonResponse({"dishes": json.loads(dumps(dishes))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+@csrf_exempt
+def calculate_recipe(request):
+    if request.method == 'POST':
+        mongo_db = MongoDB()
+        data = json.loads(request.body)
+        user_Id = data.pop('userId')
+        reservations = mongo_db.find_one('Clients', {'userId': user_Id})['reservations']
+        if reservations == []:
+            return JsonResponse({"error": "Client has no reservations."})
+        startDate = reservations[0]['startDate']
+        endDate = reservations[0]['endDate']
+        time = endDate - startDate
+        hours = time.total_seconds()/3600
+        total_price = 0
+        for game in reservations[0]['games']:
+            total_price += float(game['pricePerHour']) * hours
+        total_price += float(reservations[0]['orders'][0]['finalPrice'])
+        return JsonResponse({"total_price": json.loads(dumps(total_price))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
 def handle_cancellation(reservation):
     mongo_db = MongoDB()
     start_date = reservation['startDate']
