@@ -7,6 +7,8 @@ from bson.json_util import dumps
 from bson import ObjectId
 from datetime import datetime
 import uuid
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
 @csrf_exempt
@@ -493,3 +495,39 @@ def filter_menu_by_dish_type(request):
             return JsonResponse({"error": "No dishType provided"}, status=400)
     else:
         return JsonResponse({"error": "Invalid method"}, status=400)
+
+
+@csrf_exempt
+def login_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = authenticate(request, username=data.get('email'), password=data.get('password'))
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'user_id': user.id, 'email': user.email})
+        else:
+            return JsonResponse({'error': 'Invalid login credentials'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid method'}, status=400)
+
+@csrf_exempt
+def register_view(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = User.objects.create_user(username=data.get('email'), password=data.get('password'))
+        user.save()
+        return JsonResponse({'user_id': user.id, 'email': user.email})
+    else:
+        return JsonResponse({'error': 'Invalid method'}, status=400)
+
+
+def get_roles_view(request, userId):
+    # if request.method == 'GET':
+    #     try:
+    #         # user = User.objects.get(pk=userId)
+    #         # roles = Roles.objects.get(user=user)
+    #         # return JsonResponse({'roles': roles.roles})
+    #     except User.DoesNotExist:
+    #         return JsonResponse({'error': 'User does not exist'}, status=400)
+    # else:
+        return JsonResponse({'error': 'Invalid method'}, status=400)

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   logIn() {
     this.newUser()
-    this.authService.SignIn(this.email, this.password)
+    this.authService.signIn(this.email, this.password)
   }
 
   newUser() {
