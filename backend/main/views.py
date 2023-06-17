@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .utils import MongoDB
 from .models import Client, Employee, Game, Dish
+from bson.json_util import dumps
 
 
 @csrf_exempt
@@ -144,5 +145,93 @@ def delete_employee(request):
         mongo_db = MongoDB()
         result = mongo_db.delete_one('Employees', {'employeeId': data['employeeId']})
         return JsonResponse({"deleted_count": result.deleted_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def update_client(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        client_id = data.pop('userId')
+        result = mongo_db.update_one('Clients', {'userId': client_id}, data)
+        return JsonResponse({"modified_count": result.modified_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def update_game(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        game_id = data.pop('gameId')
+        result = mongo_db.update_one('Games', {'gameId': game_id}, data)
+        return JsonResponse({"modified_count": result.modified_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def update_employee(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        employee_id = data.pop('employeeId')
+        result = mongo_db.update_one('Employees', {'employeeId': employee_id}, data)
+        return JsonResponse({"modified_count": result.modified_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def update_dish(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        dish_id = data.pop('dishId')
+        result = mongo_db.update_one('Menu', {'dishId': dish_id}, data)
+        return JsonResponse({"modified_count": result.modified_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def find_all_clients(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        clients = mongo_db.find_all('Clients')
+        return JsonResponse({"clients": json.loads(dumps(clients))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def find_all_games(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        games = mongo_db.find_all('Games')
+        return JsonResponse({"games": json.loads(dumps(games))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def find_all_employees(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        employees = mongo_db.find_all('Employees')
+        return JsonResponse({"employees": json.loads(dumps(employees))})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+
+
+@csrf_exempt
+def find_all_dishes(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        dishes = mongo_db.find_all('Menu')
+        return JsonResponse({"dishes": json.loads(dumps(dishes))})
     else:
         return JsonResponse({"error": "Invalid method"})
