@@ -379,8 +379,7 @@ def update_reservation(request):
                 if 'endDate' in data:
                     reservation['endDate'] = datetime.strptime(data['endDate'], '%Y-%m-%dT%H:%M:%S.%f%z')
                 if 'dishes' in data:
-                    reservation['orders'][0]['dishes'] = data['dishes']
-                    reservation['orders'][0]['finalPrice'] = get_price_from_dishes(data['dishes'], mongo_db)
+                    reservation['orders'][0]['finalPrice'], reservation['orders'][0]['dishes'] = get_price_and_dishes(data['dishes'], mongo_db)
                 if 'gameId' in data:
                     new_game = mongo_db.find_one('Games', {'gameId': data['gameId']})
                     if new_game is not None:
