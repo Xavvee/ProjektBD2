@@ -16,70 +16,105 @@ console.log("Attempting to connect to MongoDB");
     const db = client.db("db_project");
     console.log("Creating collections...");
 
-    // Clients collection
-    await db.createCollection("Clients", {
-      validator: {
-        $jsonSchema: {
-          bsonType: "object",
-          required: [
-            "userId",
-            "firstName",
-            "lastName",
-            "dateOfBirth",
-            "email",
-            "phone",
-            "address",
-          ],
-          properties: {
-            userId: { bsonType: "string" },
-            firstName: { bsonType: "string" },
-            lastName: { bsonType: "string" },
-            dateOfBirth: { bsonType: "string" },
-            email: { bsonType: "string" },
-            phone: { bsonType: "string" },
-            address: { bsonType: "string" },
-            registerDate: { bsonType: "string" },
-            reservations: {
-              bsonType: "array",
-              items: {
-                bsonType: "object",
-                required: [
-                  "reservationId",
-                  "reservationStatus",
-                  "peopleCount",
-                  "startDate",
-                  "endDate",
-                  "orderDate",
-                  "games",
-                ],
-                properties: {
-                  reservationId: { bsonType: "string" },
-                  reservationStatus: { bsonType: "string" },
-                  peopleCount: { bsonType: "int" },
-                  startDate: { bsonType: "date" },
-                  endDate: { bsonType: "date" },
-                  orderDate: { bsonType: "date" },
-                  games: {
-                    bsonType: "array",
-                    items: {
-                      bsonType: "object",
-                      required: [
-                        "gameId",
-                        "gameType",
-                        "pricePerHour",
-                        "tables",
-                      ],
-                      properties: {
-                        gameId: { bsonType: "string" },
-                        gameType: { bsonType: "string" },
-                        pricePerHour: { bsonType: "string" },
-                        tables: {
-                          bsonType: "array",
-                          items: {
-                            bsonType: "object",
-                            required: ["tableId"],
-                            properties: {
-                              tableId: { bsonType: "string" },
+        // Clients collection
+        await db.createCollection("Clients", {
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object",
+                    required: [
+                        "userId",
+                        "firstName",
+                        "lastName",
+                        "dateOfBirth",
+                        "email",
+                        "phone",
+                        "address",
+                    ],
+                    properties: {
+                        userId: {bsonType: "string"},
+                        firstName: {bsonType: "string"},
+                        lastName: {bsonType: "string"},
+                        dateOfBirth: {bsonType: "string"},
+                        email: {bsonType: "string"},
+                        phone: {bsonType: "string"},
+                        address: {bsonType: "string"},
+                        registerDate: {bsonType: "string"},
+                        reservations: {
+                            bsonType: "array",
+                            items: {
+                                bsonType: "object",
+                                required: [
+                                    "reservationId",
+                                    "reservationStatus",
+                                    "peopleCount",
+                                    "startDate",
+                                    "endDate",
+                                    "orderDate",
+                                    "games",
+                                ],
+                                properties: {
+                                    reservationId: {bsonType: "string"},
+                                    reservationStatus: {bsonType: "string"},
+                                    peopleCount: {bsonType: "int"},
+                                    startDate: {bsonType: "date"},
+                                    endDate: {bsonType: "date"},
+                                    orderDate: {bsonType: "date"},
+                                    games: {
+                                        bsonType: "array",
+                                        items: {
+                                            bsonType: "object",
+                                            required: [
+                                                "gameId",
+                                                "gameType",
+                                                "pricePerHour",
+                                                "tables",
+                                            ],
+                                            properties: {
+                                                gameId: {bsonType: "string"},
+                                                gameType: {bsonType: "string"},
+                                                pricePerHour: {bsonType: "string"},
+                                                tables: {
+                                                    bsonType: "array",
+                                                    items: {
+                                                        bsonType: "object",
+                                                        required: ["tableId"],
+                                                        properties: {
+                                                            tableId: {bsonType: "string"},
+                                                        },
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                    orders: {
+                                        bsonType: "array",
+                                        items: {
+                                            bsonType: "object",
+                                            required: [
+                                                "orderId",
+                                                "dishes",
+                                                "finalPrice",
+                                            ],
+                                            properties: {
+                                                orderId: {bsonType: "string"},
+                                                dishes: {
+                                                    bsonType: "array",
+                                                    items: {
+                                                        bsonType: "object",
+                                                        required: ["dishId", "dishType", "description", "dishPrice"],
+                                                        properties: {
+                                                            dishId: {bsonType: "string"},
+                                                            dishType: {bsonType: "string"},
+                                                            description: {bsonType: "string"},
+                                                            dishPrice: {bsonType: "string"},
+                                                        },
+                                                    },
+                                                },
+                                                finalPrice: {bsonType: "string"},
+                                            },
+                                        },
+                                    },
+                                },
                             },
                           },
                         },
