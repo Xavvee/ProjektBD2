@@ -287,7 +287,7 @@ def find_all_dishes(request):
     if request.method == 'GET':
         mongo_db = MongoDB()
         dishes = mongo_db.find_all('Menu')
-        return JsonResponse({"dishes": json.loads(dumps(dishes))})
+        return JsonResponse({"dishes": json.loads(dumps(dishes))}, safe=False)
     else:
         return JsonResponse({"error": "Invalid method"})
 
