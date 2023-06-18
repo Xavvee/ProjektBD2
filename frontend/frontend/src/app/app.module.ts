@@ -13,6 +13,7 @@ import { HeaderComponent } from './home/header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { OfferNavBarComponent } from './menu/offer-nav-bar/offer-nav-bar.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-add-to-reservation.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { UserReservationsComponent } from './user-reservations/user-reservations
     MenuComponent,
     OfferNavBarComponent,
     UserReservationsComponent,
+    MenuAddToReservationComponent,
   ],
   imports: [
     BrowserModule,

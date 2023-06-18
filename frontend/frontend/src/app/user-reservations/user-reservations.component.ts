@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MakingReservationService } from '../services/making-reservation.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -17,13 +17,21 @@ export class UserReservationsComponent implements OnInit {
 
   constructor(
     private reservationService: MakingReservationService,
+    private route: ActivatedRoute,
     private router: Router,
     private datePipe: DatePipe
   ) {
     this.currentDate = new Date();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.userEmail = params['email'];
+    });
+    if(this.userEmail != null){
+      this.fetchReservations();
+    }
+  }
 
   fetchReservations(): void {
     this.reservationService.getReservationsByEmail(this.userEmail).subscribe(

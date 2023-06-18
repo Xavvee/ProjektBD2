@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
+import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-add-to-reservation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'offer', component: MenuComponent},
   { path: 'my-reservations', component: UserReservationsComponent },
-  { path: 'add-dish-to-reservation', component: MenuComponent},
+  { path: 'add-dish-to-reservation', component: MenuAddToReservationComponent},
 ];
 
 @NgModule({

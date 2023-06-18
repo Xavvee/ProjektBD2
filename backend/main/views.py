@@ -471,6 +471,9 @@ def find_reservation_by_param(request):
 
         if client_doc:
             reservations = client_doc.get('reservations', [])
+            if data.get('reservationId'):
+                reservations = [reservation for reservation in reservations if
+                                    reservation['reservationId'] == data.get('reservationId')]
             reservations = json.dumps(reservations, cls=JSONEncoder)
             return HttpResponse(reservations, content_type='application/json')
         else:
