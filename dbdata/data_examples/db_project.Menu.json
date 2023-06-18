@@ -52,5 +52,176 @@
     "dishType": "Non-Vegetarian",
     "description": "Grilled Chicken",
     "dishPrice": "18"
+  },
+  {
+    "_id": {
+      "$oid": "648c538533baa7342d60cfd2"
+    },
+    "dishId": "04230a1f-9e02-486b-a73f-df79b6a2e49c",
+    "dishType": "Vegetarian",
+    "description": "Vegetable Stir Fry",
+    "dishPrice": "12"
+  },
+  {
+    "_id": {
+      "$oid": "648c538633baa7342d60cfdb"
+    },
+    "dishId": "16dd7f11-209d-4f94-97cc-9eac5a2da136",
+    "dishType": "Non-Vegetarian",
+    "description": "Grilled Chicken",
+    "dishPrice": "18"
+  },
+  {
+    "_id": {
+      "$oid": "648c538733baa7342d60cfe4"
+    },
+    "dishId": "e9128e42-8c64-4c8e-bfc0-8e8d32c109db",
+    "dishType": "Dessert",
+    "description": "Chocolate Brownie",
+    "dishPrice": "8"
+  },
+  {
+    "_id": {
+      "$oid": "648c538833baa7342d60cfed"
+    },
+    "dishId": "bc6d6a3b-8d33-4b9e-9a2e-7c158e62e0f4",
+    "dishType": "Beverage",
+    "description": "Iced Coffee",
+    "dishPrice": "5"
+  },
+  {
+    "_id": {
+      "$oid": "648c538933baa7342d60cff6"
+    },
+    "dishId": "742c8212-8f57-4b1c-a221-1e661127d684",
+    "dishType": "Appetizer",
+    "description": "Caprese Salad",
+    "dishPrice": "9"
+  },
+  {
+    "_id": {
+      "$oid": "648c538a33baa7342d60cfff"
+    },
+    "dishId": "f26bc8d2-354f-4a69-a399-67b9c9735f3b",
+    "dishType": "Main Course",
+    "description": "Lamb Chops",
+    "dishPrice": "30"
+  },
+  {
+    "_id": {
+      "$oid": "648c538b33baa7342d60d008"
+    },
+    "dishId": "d3feac85-4db5-4e5e-b7a3-2a68f0e8b216",
+    "dishType": "Appetizer",
+    "description": "Garlic Mashed Potatoes",
+    "dishPrice": "6"
+  },
+  {
+    "_id": {
+      "$oid": "648c538c33baa7342d60d011"
+    },
+    "dishId": "01e6f0e6-7fcd-4b27-ba89-950f68a84a0d",
+    "dishType": "Dessert",
+    "description": "Cheesecake",
+    "dishPrice": "10"
+  },
+  {
+    "_id": {
+      "$oid": "648c538d33baa7342d60d01a"
+    },
+    "dishId": "a617a3d3-7aa3-4c95-94a9-9bebd5d7a96b",
+    "dishType": "Beverage",
+    "description": "Mojito",
+    "dishPrice": "8"
+  },
+  {
+    "_id": {
+      "$oid": "648c538e33baa7342d60d023"
+    },
+    "dishId": "e98db6ab-8c6c-4b5e-9f24-13d16c6a8e01",
+    "dishType": "Appetizer",
+    "description": "Bruschetta",
+    "dishPrice": "8"
+  },
+  {
+    "_id": {
+      "$oid": "648c538f33baa7342d60d02c"
+    },
+    "dishId": "b457e734-df0a-41e7-8e83-482c828dcd67",
+    "dishType": "Main Course",
+    "description": "Beef Tenderloin",
+    "dishPrice": "35"
+  },
+  {
+    "_id": {
+      "$oid": "648c539033baa7342d60d035"
+    },
+    "dishId": "d234c8a5-6f02-43f1-b8a0-1e3d43b1c5e0",
+    "dishType": "Side Dish",
+    "description": "Roasted Vegetables",
+    "dishPrice": "7"
+  },
+  {
+    "_id": {
+      "$oid": "648c539133baa7342d60d03e"
+    },
+    "dishId": "f1db80d9-7dc2-4a3d-bdff-9e7b15c6a4b9",
+    "dishType": "Dessert",
+    "description": "Chocolate Brownie",
+    "dishPrice": "9"
+  },
+  {
+    "_id": {
+      "$oid": "648c539233baa7342d60d047"
+    },
+    "dishId": "e19c25f3-12f0-4b8a-8844-9c46ed8c71ab",
+    "dishType": "Beverage",
+    "description": "Mango Smoothie",
+    "dishPrice": "6"
+  },
+  {
+    "_id": {
+      "$oid": "648c539733baa7342d60d074"
+    },
+    "dishId": "86b318f7-7146-4a1f-92d0-2d1a952a8c47",
+    "dishType": "Main Course",
+    "description": "Margherita Pizza",
+    "dishPrice": "12"
+  },
+  {
+    "_id": {
+      "$oid": "648c539633baa7342d60d06b"
+    },
+    "dishId": "fa77af09-1200-4d4e-982e-ff91c5f73370",
+    "dishType": "Appetizer",
+    "description": "Garlic Bread",
+    "dishPrice": "5"
+  },
+  {
+    "_id": {
+      "$oid": "648c539533baa7342d60d062"
+    },
+    "dishId": "f7e9a9c4-6323-4e2a-8f87-647e4a8fd26b",
+    "dishType": "Appetizer",
+    "description": "Tomato Basil Soup",
+    "dishPrice": "7"
+  },
+  {
+    "_id": {
+      "$oid": "648c539433baa7342d60d059"
+    },
+    "dishId": "de2d1d67-5e95-4129-8d95-1b56b93313d1",
+    "dishType": "Main Course",
+    "description": "Caesar Salad",
+    "dishPrice": "10"
+  },
+  {
+    "_id": {
+      "$oid": "648c539333baa7342d60d050"
+    },
+    "dishId": "c8e5e66f-9be9-41d9-b7b6-26f4ee7f2a34",
+    "dishType": "Dessert",
+    "description": "Apple Pie",
+    "dishPrice": "8"
   }
 ]

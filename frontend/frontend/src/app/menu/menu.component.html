@@ -1,5 +1,24 @@
 <app-offer-nav-bar></app-offer-nav-bar>
 
+<div class="filter-container">
+  <label for="type-filter">Typ dania:</label>
+  <select id="type-filter" [(ngModel)]="selectedType" (change)="filterDishes()">
+    <option value="">Wszystkie</option>
+    <option *ngFor="let type of dishTypes" [value]="type">{{ type }}</option>
+  </select>
+
+  <label for="search-filter">Wyszukaj danie:</label>
+  <input type="text" id="search-filter" [(ngModel)]="searchTerm" (input)="filterDishes()">
+
+  <label for="price-filter">Cena:</label>
+  <ng5-slider
+    [ngModel]="selectedPrice"
+    [options]="{ floor: getMinPrice(), ceil: getMaxPrice(), step: 1 }"
+    (valueChange)="filterDishes()"
+  ></ng5-slider>
+  <span>{{ getMinPrice()}} - {{ getMaxPrice()}} PLN</span>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -9,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let dataItem of dishList">
+    <tr *ngFor="let dataItem of filteredDishes">
       <td>{{ dataItem.dishType }}</td>
       <td>{{ dataItem.description }}</td>
       <td>{{ dataItem.dishPrice }}</td>
