@@ -1,18 +1,67 @@
 <app-offer-nav-bar></app-offer-nav-bar>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Typ dania</th>
-      <th>Nazwa</th>
-      <th>Cena (PLN)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let dataItem of dishList">
-      <td>{{ dataItem.dishType }}</td>
-      <td>{{ dataItem.description }}</td>
-      <td>{{ dataItem.dishPrice }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive w-80 table-80">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Typ gry</th>
+        <th class="text-center">Cena za godzine (PLN)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of gameList">
+        <td class="text-center">{{ dataItem.gameType }}</td>
+        <td class="text-center">{{ dataItem.pricePerHour }}</td>
+        <td class="text-center">
+          <input
+            type="date"
+            id="start"
+            name="trip-start"
+            [value]="today | date : 'yyyy-MM-dd'"
+            [min]="today | date : 'yyyy-MM-dd'"
+            [max]="maxDate"
+            [(ngModel)]="reservationDateStr"
+            (ngModelChange)="onDateChange($event)"
+          />
+          <button
+            class="btn btn-primary"
+            (click)="getFreeDates(dataItem.gameId)"
+          >
+            Pokaż terminy
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table table-striped" *ngIf="showTermDates">
+    <thead>
+      <tr>
+        <th class="text-center" style="width: 30%">Numer stolika</th>
+        <th class="text-center" style="width: 30%">Ilość miejsc</th>
+        <th class="text-center" style="width: 40%">Zajęte terminy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let table of tables">
+        <td class="text-center">{{ table.tableId }}</td>
+        <td class="text-center">{{ table.capacity }}</td>
+        <td class="text-center">
+          <ng-container
+            *ngIf="table.reservedDates.length > 0; else noReservations"
+          >
+            <ul>
+              <li *ngFor="let term of table.reservedDates">
+                <ng-container *ngIf="ifReserved(term); else noReservations">
+                  od: {{ term.startDate.$date | date : "yyyy-MM-dd HH:mm" }} do:
+                  {{ term.endDate.$date | date : "yyyy-MM-dd HH:mm" }}
+                </ng-container>
+              </li>
+            </ul>
+          </ng-container>
+          <ng-template #noReservations> Brak rezerwacji </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
