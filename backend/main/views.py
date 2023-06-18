@@ -475,7 +475,7 @@ def find_tables_for_game(gameId):
 
 @csrf_exempt
 def check_if_free_date(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         date_format = '%Y-%m-%dT%H:%M:%SZ'
         data = json.loads(request.body)
         startDate = datetime.strptime(data.pop('startDate'), date_format)
@@ -495,8 +495,9 @@ def check_if_free_date(request):
 @csrf_exempt
 def display_tables_for_game(request):
     if request.method == 'GET':
-        data = json.loads(request.body)
-        gameId = data.pop('gameId')
+        # data = json.loads(request.body)
+        # gameId = data.pop('gameId')
+        gameId = request.GET.get('gameId')
         tables = find_tables_for_game(gameId)
         return JsonResponse({"games": json.loads(dumps(tables))})
     else:

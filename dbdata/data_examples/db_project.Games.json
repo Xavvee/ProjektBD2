@@ -115,7 +115,8 @@
     "tables": [
       {
         "tableId": "1",
-        "capacity": 4
+        "capacity": 4,
+        "reservedDates": []
       },
       {
         "tableId": "2",

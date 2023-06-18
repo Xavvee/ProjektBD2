@@ -1,0 +1,20 @@
+<app-offer-nav-bar></app-offer-nav-bar>
+
+<div class="table-responsive w-80 table-80">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Typ dania</th>
+        <th class="text-center">Nazwa</th>
+        <th class="text-center">Cena (PLN)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dataItem of dishList">
+        <td class="text-center">{{ dataItem.dishType }}</td>
+        <td class="text-center">{{ dataItem.description }}</td>
+        <td class="text-center">{{ dataItem.dishPrice }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

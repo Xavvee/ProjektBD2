@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,7 +18,21 @@ export class MakingReservationService {
     return this.http.get<any[]>(this.baseUrl + '/find_all_games/');
   }
 
-  // getTablesForGame(gameId): Observable<any[]> {
-  //   return this.http.get<any[]>(this.baseUrl + '/display_tables_for_game/');
-  // }
+  getTablesForGame(gameId: string): Observable<any[]> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const params = new HttpParams().set('gameId', gameId);
+    return this.http.get<any[]>(this.baseUrl + '/display_tables_for_game/', {
+      headers,
+      params,
+    });
+  }
+
+  checkIfFreeDate(gameId: string, startDate: string, endDate: string) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let params = { gameId, startDate, endDate };
+    return this.http.get<any[]>(this.baseUrl + '/check_if_free_date/', {
+      headers,
+      params,
+    });
+  }
 }
