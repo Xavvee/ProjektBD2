@@ -18,7 +18,16 @@ export class MakingReservationService {
     return this.http.get<any[]>(this.baseUrl + '/find_all_games/');
   }
 
-  // getTablesForGame(gameId): Observable<any[]> {
-  //   return this.http.get<any[]>(this.baseUrl + '/display_tables_for_game/');
-  // }
+
+  getReservationsByEmail(email: string): Observable<any[]> {
+    return this.http.post<any[]>(this.baseUrl + '/find_reservation_by_param/', {email});
+  }
+
+  updateReservationStatus(email: string, id: string, status: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/update_reservation/`, {email: email ,reservationId: id, reservationStatus: status});
+  }
+  
+  navigateToOrderDish(email: string, userId: string, reservationId: string): void {
+    // Implement your navigation logic here...
+  }
 }

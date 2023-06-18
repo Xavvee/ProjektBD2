@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'offer', component: MenuComponent},
-  { path: 'my-reservations', component: UserReservationsComponent }
+  { path: 'my-reservations', component: UserReservationsComponent },
+  { path: 'add-dish-to-reservation', component: MenuComponent},
 ];
 
 @NgModule({
