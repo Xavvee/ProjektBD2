@@ -1,0 +1,39 @@
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  input[type="text"],
+  select,
+  input[type="range"] {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  
+  
+  tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  
+  span {
+    margin-left: 10px;
+  }
+  
