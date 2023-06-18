@@ -14,6 +14,9 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuNavBarComponent } from './menu/menu-nav-bar/menu-nav-bar.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-add-to-reservation.component';
+import { OfferComponent } from './offer/offer.component';
+import { OfferNavBarComponent } from './offer/offer-nav-bar/offer-nav-bar.component';
+import { FoodOfferComponent } from './offer/food-offer/food-offer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-ad
     MenuNavBarComponent,
     UserReservationsComponent,
     MenuAddToReservationComponent,
+    OfferComponent,
+    OfferNavBarComponent,
+    FoodOfferComponent
   ],
   imports: [
     BrowserModule,
