@@ -1,3 +1,4 @@
+import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -398,6 +399,68 @@ def update_reservation(request):
 
 
 @csrf_exempt
+def find_client_reservations(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
+        if client_doc:
+            reservations = client_doc.get('reservations', [])
+            return JsonResponse(reservations, safe=False)
+        else:
+            return JsonResponse({"error": "Client not found"}, status=404)
+    else:
+        return JsonResponse({"error": "Invalid method"}, status=405)
+    
+
+@csrf_exempt
+def find_future_client_reservations(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
+        if client_doc:
+            current_date = datetime.datetime.now()
+            reservations = client_doc.get('reservations', [])
+            future_reservations = [reservation for reservation in reservations if reservation['startDate'] > current_date]
+            return JsonResponse(future_reservations, safe=False)
+        else:
+            return JsonResponse({"error": "Client not found"}, status=404)
+    else:
+        return JsonResponse({"error": "Invalid method"}, status=405)
+
+@csrf_exempt
+def find_past_client_reservations(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
+        if client_doc:
+            current_date = datetime.datetime.now()
+            reservations = client_doc.get('reservations', [])
+            past_reservations = [reservation for reservation in reservations if reservation['startDate'] < current_date]
+            return JsonResponse(past_reservations, safe=False)
+        else:
+            return JsonResponse({"error": "Client not found"}, status=404)
+    else:
+        return JsonResponse({"error": "Invalid method"}, status=405)
+    
+@csrf_exempt
+def find_reservation_with_status(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        mongo_db = MongoDB()
+        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
+        given_status = data.get('status')
+        if client_doc:
+            reservations = client_doc.get('reservations', [])
+            status_reservations = [reservation for reservation in reservations if reservation['reservationStatus'] == given_status]
+            return JsonResponse(status_reservations, safe=False)
+        else:
+            return JsonResponse({"error": "Client not found"}, status=404)
+    else:
+        return JsonResponse({"error": "Invalid method"}, status=405)
+=======
 def find_tables_for_game(gameId):
     mongo_db = MongoDB()
     tables = mongo_db.find_one('Games', { 'gameId': gameId })['tables']
