@@ -8,23 +8,31 @@
   </select>
 
   <label for="search-filter">Wyszukaj danie:</label>
-  <input type="text" id="search-filter" [(ngModel)]="searchTerm" (input)="filterDishes()">
+  <input
+    type="text"
+    id="search-filter"
+    placeholder="Enter a dish name"
+    [(ngModel)]="searchTerm"
+    (input)="filterDishes()"
+  />
 
   <label for="price-filter">Cena:</label>
-  <ng5-slider
-    [ngModel]="selectedPrice"
+  <ngx-slider
+    [(value)]="minValue"
+    [(highValue)]="maxValue"
     [options]="{ floor: getMinPrice(), ceil: getMaxPrice(), step: 1 }"
-    (valueChange)="filterDishes()"
-  ></ng5-slider>
-  <span>{{ getMinPrice()}} - {{ getMaxPrice()}} PLN</span>
+    (userChange)="filterDishes()"
+  ></ngx-slider>
+
+  <span>{{ getMinPrice() }} - {{ getMaxPrice() }} PLN</span>
 </div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Typ dania</th>
-      <th>Nazwa</th>
-      <th>Cena (PLN)</th>
+      <th scope="col">Typ Dania</th>
+      <th scope="col">Nazwa</th>
+      <th scope="col">Cena (PLN)</th>
     </tr>
   </thead>
   <tbody>

@@ -13,7 +13,8 @@ export class MenuComponent implements OnInit {
   filteredDishes: any = [];
   selectedType: string = '';
   searchTerm: string = '';
-  selectedPrice: [number, number] = [0, 100]; 
+  minValue: number = 20;
+  maxValue: number = 80;
   dishTypes: string[] = [];
 
   ngOnInit(): void {
@@ -25,44 +26,51 @@ export class MenuComponent implements OnInit {
       this.dishList = Object.values(data)[0];
       this.filteredDishes = Object.values(data)[0];
       this.extractDishTypes();
-      this.selectedPrice = [this.getMinPrice(), this.getMaxPrice()]; 
+      this.minValue = this.getMinPrice();
+      this.maxValue = this.getMaxPrice();
       this.filterDishes();
     });
   }
 
   extractDishTypes(): void {
-    this.dishTypes = Array.from(new Set(this.dishList.map((item: any) => item.dishType)));
+    this.dishTypes = Array.from(
+      new Set(this.dishList.map((item: any) => item.dishType))
+    );
   }
 
   filterDishes(): void {
     let filteredDishes = this.dishList;
-  
+
     if (this.selectedType) {
-      filteredDishes = filteredDishes.filter((item: any) => item.dishType === this.selectedType);
-    }
-  
-    if (this.searchTerm) {
       filteredDishes = filteredDishes.filter(
-      (item: any) =>
+        (item: any) => item.dishType === this.selectedType
+      );
+    }
+
+    if (this.searchTerm) {
+      filteredDishes = filteredDishes.filter((item: any) =>
         item.description.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
-  
+
     filteredDishes = filteredDishes.filter(
       (item: any) =>
-        parseFloat(item.dishPrice) >= this.selectedPrice[0] &&
-        parseFloat(item.dishPrice) <= this.selectedPrice[1]
+        parseFloat(item.dishPrice) >= this.minValue &&
+        parseFloat(item.dishPrice) <= this.maxValue
     );
-  
+
     this.filteredDishes = filteredDishes;
   }
-  
 
   getMinPrice(): number {
-    return Math.min(...this.dishList.map((item: any) => parseFloat(item.dishPrice)));
+    return Math.min(
+      ...this.dishList.map((item: any) => parseFloat(item.dishPrice))
+    );
   }
 
   getMaxPrice(): number {
-    return Math.max(...this.dishList.map((item: any) => parseFloat(item.dishPrice)));
+    return Math.max(
+      ...this.dishList.map((item: any) => parseFloat(item.dishPrice))
+    );
   }
 }
