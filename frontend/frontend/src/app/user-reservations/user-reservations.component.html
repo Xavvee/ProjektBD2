@@ -1,5 +1,64 @@
-<div class="main" [routerLink]="['']" routerLinkActive="active">
-    <div class="header">
-        <app-header></app-header>
+<div class="input-container">
+    <label for="email">Email:</label>
+    <input id="email" [(ngModel)]="userEmail" type="text" />
+    <button class="fetch-button" (click)="fetchReservations()">Find Reservations</button>
+  </div>
+  <h2>Reservations:</h2>
+
+  <div *ngIf="reservations.length > 0; else noReservations">
+    <div class="reservation-box" *ngFor="let reservation of reservations; let i = index">
+      <p><strong>Game Type:</strong> {{ reservation.games[0].gameType }}</p>
+      <p><strong>Status:</strong> {{ reservation.reservationStatus }}</p>
+      <p><strong>Start Date:</strong> {{ transformDate(reservation.startDate) }}</p>
+      <p><strong>End Date:</strong> {{ transformDate(reservation.endDate) }}</p>
+      <button class="custom-button" (click)="expandedIndex = i">
+        Show dishes
+      </button>
+      <div *ngIf="expandedIndex === i">
+        <h3>Ordered Dishes:</h3>
+        <div *ngFor="let order of reservation.orders">
+          <div *ngFor="let dish of order.dishes">
+            <p>{{ dish.dishType }}: {{ dish.description }}</p>
+          </div>
+        </div>
+      </div>
+      <p><strong>Total Price:</strong> {{ calculateTotalPrice(reservation) }} PLN</p>
+
+      <button
+        class="add-dishes-button"
+        (click)="onAddDishes(userEmail, reservation.reservationId)"
+        *ngIf="
+          isFutureDate(reservation.startDate) &&
+          reservation.reservationStatus !== 'Canceled' &&
+          reservation.reservationStatus !== 'Confirmed'"
+      >
+        Update Dishes
+      </button>
+  
+      <button
+        class="cancel-button"
+        (click)="onCancel(reservation.reservationId)"
+        *ngIf="
+          isFutureDate(reservation.startDate) &&
+          reservation.reservationStatus !== 'Canceled'"
+      >
+        Cancel
+      </button>
+  
+      <button
+        class="pay-button"
+        (click)="onPay(reservation.reservationId)"
+        *ngIf="
+          isFutureDate(reservation.startDate) &&
+          reservation.reservationStatus !== 'Canceled' &&
+          reservation.reservationStatus !== 'Confirmed'"
+      >
+        Pay
+      </button>
     </div>
-</div>
+  </div>
+  
+  <ng-template #noReservations>
+    <p>No reservations found.</p>
+  </ng-template>
+  

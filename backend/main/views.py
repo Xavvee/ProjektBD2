@@ -1,7 +1,7 @@
 import datetime
 import json
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .utils import MongoDB
 from .models import Client, Employee, Game, Dish, Reservation
 from bson.json_util import dumps
@@ -95,7 +95,9 @@ class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
             return str(o)
-        return json.JSONEncoder.default(self, o)
+        if isinstance(o, datetime):
+            return o.isoformat()
+        return super().default(o)
 
 
 @csrf_exempt
@@ -364,6 +366,7 @@ def get_price_and_dishes(dishes, mongo_db):
 def update_reservation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
+        print(data)
         mongo_db = MongoDB()
         client = mongo_db.find_one('Clients', {'email': data['email']})
         if client is None:
@@ -450,17 +453,29 @@ def find_past_client_reservations(request):
 
 
 @csrf_exempt
-def find_reservation_with_status(request):
+def find_reservation_by_param(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        client_doc = mongo_db.find_one('Clients', {'userId': data['userId']})
-        given_status = data.get('status')
+
+        search_param = {}
+        if 'userId' in data:
+            search_param = {'userId': data['userId']}
+        elif 'email' in data:
+            search_param = {'email': data['email']}
+
+        if not search_param:
+            return JsonResponse({"error": "Missing search parameter (userId or email)"}, status=400)
+
+        client_doc = mongo_db.find_one('Clients', search_param)
+
         if client_doc:
             reservations = client_doc.get('reservations', [])
-            status_reservations = [reservation for reservation in reservations if
-                                   reservation['reservationStatus'] == given_status]
-            return JsonResponse(status_reservations, safe=False)
+            if data.get('reservationId'):
+                reservations = [reservation for reservation in reservations if
+                                    reservation['reservationId'] == data.get('reservationId')]
+            reservations = json.dumps(reservations, cls=JSONEncoder)
+            return HttpResponse(reservations, content_type='application/json')
         else:
             return JsonResponse({"error": "Client not found"}, status=404)
     else:
@@ -475,7 +490,7 @@ def find_tables_for_game(gameId):
 
 @csrf_exempt
 def check_if_free_date(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         date_format = '%Y-%m-%dT%H:%M:%SZ'
         data = json.loads(request.body)
         startDate = datetime.strptime(data.pop('startDate'), date_format)
@@ -495,8 +510,9 @@ def check_if_free_date(request):
 @csrf_exempt
 def display_tables_for_game(request):
     if request.method == 'GET':
-        data = json.loads(request.body)
-        gameId = data.pop('gameId')
+        # data = json.loads(request.body)
+        # gameId = data.pop('gameId')
+        gameId = request.GET.get('gameId')
         tables = find_tables_for_game(gameId)
         return JsonResponse({"games": json.loads(dumps(tables))})
     else:

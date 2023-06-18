@@ -33,6 +33,8 @@
       <th scope="col">Typ Dania</th>
       <th scope="col">Nazwa</th>
       <th scope="col">Cena (PLN)</th>
+      <th scope="col">Akcje</th>
+      <!-- Actions -->
     </tr>
   </thead>
   <tbody>
@@ -40,6 +42,18 @@
       <td>{{ dataItem.dishType }}</td>
       <td>{{ dataItem.description }}</td>
       <td>{{ dataItem.dishPrice }}</td>
+      <td>
+        <button (click)="addDish(dataItem.dishId, dataItem.description)">+</button>
+        <button [disabled]="!isDishInReservation(dataItem?.dishId)" (click)="removeDish(dataItem?.dishId)">-</button>
+    </td>
     </tr>
   </tbody>
 </table>
+
+<h2>Twoje zamówienie:</h2>
+
+<ul>
+  <li *ngFor="let dish of reservationDishList">{{ dish.description }}</li>
+</ul>
+
+<button (click)="makeOrder(this.email)">Złóż zamówienie</button>
