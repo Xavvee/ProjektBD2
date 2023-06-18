@@ -22,16 +22,17 @@
         "endDate": {
           "$date": "2023-02-01T20:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-02-01T20:00:00Z"
+        },
         "games": [
           {
             "gameId": "a831e76b-5f4f-4a36-bdbd-9ffbc47d9732",
             "gameType": "Bowling",
-            "capacity": 10,
             "pricePerHour": "20",
             "tables": [
               {
-                "tableId": "1",
-                "capacity": 5
+                "tableId": "1"
               }
             ]
           }
@@ -40,10 +41,19 @@
           {
             "orderId": "19486419-61c3-4c12-8534-076a073b898e",
             "dishes": [
-              "8b231755-8c29-4e3d-94c5-67c8c56b049c",
-              "c7a5c4ef-2445-4536-8bc3-1f9b2be1d97f"
+              {
+                "dishId": "8b231755-8c29-4e3d-94c5-67c8c56b049c",
+                "dishType": "Appetizer",
+                "description": "Chicken Wings",
+                "dishPrice": "10"
+              },
+              {
+                "dishId": "c7a5c4ef-2445-4536-8bc3-1f9b2be1d97f",
+                "dishType": "Main Course",
+                "description": "Steak with fries",
+                "dishPrice": "20"
+              }
             ],
-            "orderDate": "2023-02-01",
             "finalPrice": "30"
           }
         ]
@@ -73,16 +83,17 @@
         "endDate": {
           "$date": "2023-04-01T13:30:00Z"
         },
+        "orderDate": {
+          "$date": "2023-04-01T13:30:00Z"
+        },
         "games": [
           {
             "gameId": "c63e2d67-7e94-4e94-8a8a-13c704d5e676",
             "gameType": "Pool",
-            "capacity": 8,
             "pricePerHour": "15",
             "tables": [
               {
-                "tableId": "2",
-                "capacity": 4
+                "tableId": "2"
               }
             ]
           }
@@ -91,10 +102,19 @@
           {
             "orderId": "cc8c576f-f48c-4b17-a22c-0c9d7d1abf09",
             "dishes": [
-              "9645a431-2965-4767-bc5e-d66267ef72f4",
-              "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64"
+              {
+                "dishId": "9645a431-2965-4767-bc5e-d66267ef72f4",
+                "dishType": "Appetizer",
+                "description": "Fried Calamari",
+                "dishPrice": "12"
+              },
+              {
+                "dishId": "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
+                "dishType": "Main Course",
+                "description": "Grilled Salmon with vegetables",
+                "dishPrice": "25"
+              }
             ],
-            "orderDate": "2023-04-01",
             "finalPrice": "45"
           }
         ]
@@ -124,16 +144,17 @@
         "endDate": {
           "$date": "2023-04-16T19:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-04-15T7:00:00Z"
+        },
         "games": [
           {
             "gameId": "f5a6e9c8-2a0e-4a61-8d6e-85937399c8e1",
             "gameType": "Ping Pong",
-            "capacity": 2,
             "pricePerHour": "10",
             "tables": [
               {
-                "tableId": "1",
-                "capacity": 2
+                "tableId": "1"
               }
             ]
           }
@@ -142,10 +163,19 @@
           {
             "orderId": "748ad6f4-1c2d-44e2-86d3-8a2eac9e80e9",
             "dishes": [
-              "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
-              "04230a1f-9e02-486b-a73f-df79b6a2e49c"
+              {
+                "dishId": "6b91d7df-d39d-4b5e-afaf-5a4e15c48b64",
+                "dishType": "Main Course",
+                "description": "Grilled Salmon with vegetables",
+                "dishPrice": "25"
+              },
+              {
+                "dishId": "04230a1f-9e02-486b-a73f-df79b6a2e49c",
+                "dishType": "Vegetarian",
+                "description": "Vegetable Stir Fry",
+                "dishPrice": "12"
+              }
             ],
-            "orderDate": "2023-04-15",
             "finalPrice": "30"
           }
         ]
@@ -175,16 +205,17 @@
         "endDate": {
           "$date": "2023-05-10T22:00:00Z"
         },
+        "orderDate": {
+          "$date": "2023-05-10T12:00:00Z"
+        },
         "games": [
           {
             "gameId": "db7e4652-378f-4f46-8e0e-6e20c1a319a2",
             "gameType": "Pool",
-            "capacity": 6,
             "pricePerHour": "12",
             "tables": [
               {
-                "tableId": "2",
-                "capacity": 3
+                "tableId": "2"
               }
             ]
           }
@@ -193,10 +224,19 @@
           {
             "orderId": "e6e4a176-5be3-4c44-8be1-3f87f747ca1f",
             "dishes": [
-              "16dd7f11-209d-4f94-97cc-9eac5a2da136",
-              "04230a1f-9e02-486b-a73f-df79b6a2e49c"
+              {
+                "dishId": "16dd7f11-209d-4f94-97cc-9eac5a2da136",
+                "dishType": "Non-Vegetarian",
+                "description": "Grilled Chicken",
+                "dishPrice": "18"
+              },
+              {
+                "dishId": "04230a1f-9e02-486b-a73f-df79b6a2e49c",
+                "dishType": "Vegetarian",
+                "description": "Vegetable Stir Fry",
+                "dishPrice": "12"
+              }
             ],
-            "orderDate": "2023-05-10",
             "finalPrice": "40"
           }
         ]

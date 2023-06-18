@@ -3,6 +3,10 @@ from .views import create_client, create_dish, create_game, create_employee, fin
     delete_dish, find_game, delete_game, find_employee, delete_employee, update_client, update_dish, update_game, \
     update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes, create_reservation , find_client_reservations, \
     find_future_client_reservations, find_past_client_reservations, find_reservation_with_status
+    update_employee, find_all_clients, find_all_games, find_all_employees, find_all_dishes, create_reservation, \
+    check_if_free_date, display_tables_for_game, show_clients_ordered_dishes, calculate_recipe, \
+    add_table_to_game, update_reservation, filter_menu_by_dish_type
+
 
 urlpatterns = [
     path('create_client/', create_client, name='create_client'),
@@ -30,4 +34,11 @@ urlpatterns = [
     path('find_future_client_reservations/', find_future_client_reservations, name='find_future_client_reservations'),
     path('find_past_client_reservations/', find_past_client_reservations, name='find_past_client_reservations'),
     path('find_reservation_with_status/', find_reservation_with_status, name='find_reservation_with_status')
+    path('check_if_free_date/', check_if_free_date, name='check_if_free_date'),
+    path('display_tables_for_game/', display_tables_for_game, name='display_tables_for_game'),
+    path('show_clients_ordered_dishes/', show_clients_ordered_dishes, name='show_clients_ordered_dishes'),
+    path('calculate_recipe/', calculate_recipe, name='calculate_recipe'),
+    path('add_table_to_game/', add_table_to_game, name='add_table_to_game'),
+    path('update_reservation/', update_reservation, name='update_reservation'),
+    path('filter_menu_by_dish_type/', filter_menu_by_dish_type, name='filter_menu_by_dish_type'),
 ]
