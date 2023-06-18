@@ -32,7 +32,7 @@ import { FoodOfferComponent } from './offer/food-offer/food-offer.component';
     MenuAddToReservationComponent,
     OfferComponent,
     OfferNavBarComponent,
-    FoodOfferComponent
+    FoodOfferComponent,
   ],
   imports: [
     BrowserModule,

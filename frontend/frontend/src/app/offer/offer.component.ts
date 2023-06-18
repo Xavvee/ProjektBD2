@@ -10,7 +10,7 @@ export class OfferComponent implements OnInit {
   constructor(private db: MakingReservationService) {}
 
   gameList: any = [];
-  reservationDate: any | null = null;
+  reservationDate: Date = new Date();
   reservationDateStr: any | null = null;
   today!: string;
   maxDate!: string;
@@ -31,12 +31,18 @@ export class OfferComponent implements OnInit {
     });
   }
 
-  getFreeDates(gameId: string) {
-    this.db.getTablesForGame(gameId).subscribe((data) => {
+  async getFreeDates(gameId: string) {
+    try {
+      const data = await this.db.getTablesForGame(gameId);
       this.tables = Object.values(data)[0];
-    });
-    console.log(this.tables[0].reservedDates);
-    this.showTermDates = true;
+      for (let table of this.tables) {
+        console.log(table.reservedDates.length);
+      }
+      this.showTermDates = true;
+    } catch (error) {
+      // Obsługa błędu
+      console.error(error);
+    }
   }
 
   onDateChange(date: string) {
@@ -46,10 +52,25 @@ export class OfferComponent implements OnInit {
   }
 
   ifReserved(term: any) {
-    console.log(term.startDate.$date > this.reservationDate);
-    if (term.startDate.$date > this.reservationDate) {
+    console.log(term);
+    console.log(this.reservationDate);
+    console.log(this.reservationDateStr);
+    let newDate = new Date(term.startDate.$date);
+    if (
+      newDate.getFullYear() !== this.reservationDate.getFullYear() ||
+      newDate.getMonth() !== this.reservationDate.getMonth() ||
+      newDate.getDate() !== this.reservationDate.getDate()
+    ) {
       return false;
     }
     return true;
+  }
+
+  checkIfReservationsExists(table: any) {
+    console.log(table);
+    if (table.reservedDates.length > 0) {
+      return true;
+    }
+    return false;
   }
 }

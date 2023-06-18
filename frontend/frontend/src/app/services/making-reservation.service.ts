@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -55,13 +55,24 @@ export class MakingReservationService {
     });
   }
 
-    getTablesForGame(gameId: string): Observable<any[]> {
+  async getTablesForGame(gameId: string): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const params = new HttpParams().set('gameId', gameId);
-    return this.http.get<any[]>(this.baseUrl + '/display_tables_for_game/', {
-      headers,
-      params,
-    });
+
+    try {
+      const response = await this.http
+        .get<any[]>(this.baseUrl + '/display_tables_for_game/', {
+          headers,
+          params,
+        })
+        .pipe(map((data) => Object.values(data)))
+        .toPromise();
+
+      return response;
+    } catch (error) {
+      // Obsługa błędu
+      throw error;
+    }
   }
 
   checkIfFreeDate(gameId: string, startDate: string, endDate: string) {
