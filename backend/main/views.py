@@ -301,7 +301,7 @@ def create_reservation(request):
         mongo_db = MongoDB()
 
         # retrieve the client and game using their respective IDs
-        client = mongo_db.find_one('Clients', {'userId': data['userId']})
+        client = mongo_db.find_one('Clients', {'email': data['email']})
         game = mongo_db.find_one('Games', {'gameId': data['gameId']})
 
         if client is None or game is None:
@@ -331,7 +331,7 @@ def create_reservation(request):
 
         # add the new reservation to the client's reservations
         client['reservations'].append(reservation_dict)
-        mongo_db.update_one('Clients', {'userId': data['userId']}, {'reservations': client['reservations']})
+        mongo_db.update_one('Clients', {'email': data['email']}, {'reservations': client['reservations']})
 
         # add the new reservation to the game's tables
         for table in game['tables']:
@@ -365,7 +365,7 @@ def update_reservation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         mongo_db = MongoDB()
-        client = mongo_db.find_one('Clients', {'userId': data['userId']})
+        client = mongo_db.find_one('Clients', {'email': data['email']})
         if client is None:
             return JsonResponse({"error": "Client not found"})
 
@@ -393,7 +393,7 @@ def update_reservation(request):
 
                 break
 
-        mongo_db.update_one('Clients', {'userId': data['userId']}, {'reservations': client['reservations']})
+        mongo_db.update_one('Clients', {'email': data['email']}, {'reservations': client['reservations']})
         return JsonResponse({"message": "Reservation updated"})
     else:
         return JsonResponse({"error": "Invalid method"})

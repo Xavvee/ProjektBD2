@@ -210,6 +210,17 @@ console.log("Attempting to connect to MongoDB");
         });
 
         console.log("Collections created!");
+
+        // Create the unique index on the email field
+        await db.collection('Clients').createIndex({"userId": 1}, {unique: true});
+        await db.collection('Clients').createIndex({"email": 1}, {unique: true});
+        await db.collection('Employees').createIndex({"employeeId": 1}, {unique: true});
+        await db.collection('Employees').createIndex({"email": 1}, {unique: true});
+        await db.collection('Games').createIndex({"gameId": 1}, {unique: true});
+        await db.collection('Menu').createIndex({"dishId": 1}, {unique: true});
+
+        console.log("Indexes created!");
+
     } catch (err) {
         console.error("An error occurred connecting to MongoDB: ", err);
     } finally {
