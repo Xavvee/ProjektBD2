@@ -10,10 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
-import { MenuComponent } from './menu/menu.component';
-import { OfferNavBarComponent } from './menu/offer-nav-bar/offer-nav-bar.component';
+import { OfferComponent } from './offer/offer.component';
+import { OfferNavBarComponent } from './offer/offer-nav-bar/offer-nav-bar.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
-import { FoodOfferComponent } from './menu/food-offer/food-offer.component';
+import { FoodOfferComponent } from './offer/food-offer/food-offer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { FoodOfferComponent } from './menu/food-offer/food-offer.component';
     NavBarComponent,
     HomeComponent,
     HeaderComponent,
-    MenuComponent,
+    OfferComponent,
     OfferNavBarComponent,
     UserReservationsComponent,
     FoodOfferComponent,

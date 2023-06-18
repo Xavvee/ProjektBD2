@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MakingReservationService } from '../services/making-reservation.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css'],
+  selector: 'app-offer',
+  templateUrl: './offer.component.html',
+  styleUrls: ['./offer.component.css'],
 })
-export class MenuComponent implements OnInit {
+export class OfferComponent implements OnInit {
   constructor(private db: MakingReservationService) {}
 
   gameList: any = [];
