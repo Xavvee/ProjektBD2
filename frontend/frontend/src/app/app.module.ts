@@ -11,20 +11,20 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
 import { MenuComponent } from './menu/menu.component';
-import { OfferNavBarComponent } from './menu/offer-nav-bar/offer-nav-bar.component';
+import { MenuNavBarComponent } from './menu/menu-nav-bar/menu-nav-bar.component';
 import { UserReservationsComponent } from './user-reservations/user-reservations.component';
 import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-add-to-reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,  
+    RegisterComponent,
     LoginComponent,
     NavBarComponent,
     HomeComponent,
     HeaderComponent,
     MenuComponent,
-    OfferNavBarComponent,
+    MenuNavBarComponent,
     UserReservationsComponent,
     MenuAddToReservationComponent,
   ],
