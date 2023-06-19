@@ -18,7 +18,7 @@ def create_client(request):
         data = json.loads(request.body)
         data['userId'] = str(uuid.uuid4())  # auto-generate userId
         mongo_db = MongoDB()
-        client = Client(**data)
+        client = Client.from_dict(data)
         client_dict = client.__dict__
         result = mongo_db.insert_one('Clients', client_dict)
         return JsonResponse({"inserted_id": str(result)})
@@ -296,10 +296,8 @@ def find_all_dishes(request):
 
 @csrf_exempt
 def create_reservation(request):
-    print(request)
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(data)
 
         # create a new MongoDB connection
         mongo_db = MongoDB()
@@ -368,7 +366,6 @@ def get_price_and_dishes(dishes, mongo_db):
 def update_reservation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(data)
         mongo_db = MongoDB()
         client = mongo_db.find_one('Clients', {'email': data['email']})
         if client is None:

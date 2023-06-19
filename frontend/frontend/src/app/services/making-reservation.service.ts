@@ -121,4 +121,9 @@ export class MakingReservationService {
       }
     );
   }
+
+
+  createUser(data: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + '/create_client/', data);
+  }
 }

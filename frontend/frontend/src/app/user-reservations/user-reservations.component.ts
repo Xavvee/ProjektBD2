@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MakingReservationService } from '../services/making-reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-reservations',
@@ -14,6 +15,8 @@ export class UserReservationsComponent implements OnInit {
   currentDate: Date;
   userEmail: string = '';
   expandedIndex: number | null = null;
+  filteredReservations: any[] = [];
+  showOldReservations: boolean = false;
 
   constructor(
     private reservationService: MakingReservationService,
@@ -25,18 +28,41 @@ export class UserReservationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.userEmail = params['email'];
     });
-    if(this.userEmail != null){
+    if (this.userEmail != null) {
       this.fetchReservations();
     }
   }
 
   fetchReservations(): void {
     this.reservationService.getReservationsByEmail(this.userEmail).subscribe(
-      (data) => (this.reservations = data),
-      (error) => console.error(error)
+      (data) => {
+        this.reservations = data;
+        this.filterReservations();
+      },
+      (error: HttpErrorResponse) => {
+        console.error(error);
+        if (error.status === 404) {
+          this.router.navigateByUrl('/create-user');
+        }
+      }
+    );
+  }
+
+  createUser(): void {
+    const userData = {
+      email: this.userEmail,
+    };
+
+    this.reservationService.createUser(userData).subscribe(
+      (response) => {
+        console.log('User created successfully', response);
+        this.router.navigate(['/create-user']);
+      },
+      (error) =>
+        console.error('There was an error while creating the user', error)
     );
   }
 
@@ -98,5 +124,19 @@ export class UserReservationsComponent implements OnInit {
 
   transformDate(date: string): string {
     return this.datePipe.transform(date, 'dd-MM-yyyy, hh:mm a')!;
+  }
+
+  // New method to filter reservations
+  filterReservations(): void {
+    this.filteredReservations = this.reservations.filter(
+      (reservation) =>
+        this.isFutureDate(reservation.startDate) || this.showOldReservations
+    );
+  }
+
+  // New method to toggle old reservations
+  toggleOldReservations(): void {
+    this.showOldReservations = !this.showOldReservations;
+    this.filterReservations(); // Refilter the reservations when we toggle old reservations
   }
 }

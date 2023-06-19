@@ -17,6 +17,7 @@ import { MenuAddToReservationComponent } from './menu-add-to-reservation/menu-ad
 import { OfferComponent } from './offer/offer.component';
 import { OfferNavBarComponent } from './offer/offer-nav-bar/offer-nav-bar.component';
 import { FoodOfferComponent } from './offer/food-offer/food-offer.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FoodOfferComponent } from './offer/food-offer/food-offer.component';
     OfferComponent,
     OfferNavBarComponent,
     FoodOfferComponent,
+    CreateUserComponent,
   ],
   imports: [
     BrowserModule,
