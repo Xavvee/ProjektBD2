@@ -25,7 +25,7 @@
           />
           <button
             class="btn btn-primary"
-            (click)="getFreeDates(dataItem.gameId)"
+            (click)="findFreeTermins(dataItem.gameId)"
           >
             Pokaż terminy
           </button>
@@ -69,9 +69,21 @@
     <select
       class="form-select w-5rem mb-3 mx-auto"
       [(ngModel)]="selectedGameId"
+      (change)="passTableList()"
     >
       <option *ngFor="let game of gameList" [value]="game.gameId">
         {{ game.gameType }}
+      </option>
+    </select>
+
+    <h2>Wybierz stolik!</h2>
+    <select
+      class="form-select w-5rem mb-3 mx-auto"
+      [(ngModel)]="selectedTableId"
+      (change)="findCapacity()"
+    >
+      <option *ngFor="let table of tablesToSelect" [value]="table.tableId">
+        nr stolika: {{ table.tableId }}, ilość miejsc: {{ table.capacity }}
       </option>
     </select>
     <input

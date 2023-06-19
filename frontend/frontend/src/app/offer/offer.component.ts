@@ -23,6 +23,12 @@ export class OfferComponent implements OnInit {
   ifFreeTermin!: any;
   userEmail!: string;
   selectedGameId!: string;
+  selectedTableId!: string;
+  selectedGameTableList: any = [];
+  tablesToSelect: any = [];
+  howmanyPpl!: any;
+  capacity!: string;
+  dishes: any = [];
 
   ngOnInit(): void {
     this.today = new Date().toISOString().split('T')[0];
@@ -39,13 +45,38 @@ export class OfferComponent implements OnInit {
   }
 
   async getFreeDates(gameId: string) {
+    let tab: any;
     try {
       const data = await this.db.getTablesForGame(gameId);
-      this.tables = Object.values(data)[0];
-      this.showTermDates = true;
+      tab = Object.values(data)[0];
     } catch (error) {
       console.error(error);
     }
+    return tab;
+  }
+
+  async findFreeTermins(gameId: string) {
+    let tab = await this.getFreeDates(gameId);
+    this.tables = tab;
+    this.showTermDates = true;
+  }
+
+  async passTableList() {
+    console.log(this.selectedGameId);
+    let tab = await this.getFreeDates(this.selectedGameId);
+    this.tablesToSelect = tab;
+    console.log(tab);
+  }
+
+  findCapacity() {
+    console.log(this.selectedTableId);
+    let tmp: any;
+    tmp = this.tablesToSelect.find(
+      (table: any) => table.tableId === this.selectedTableId
+    );
+    console.log(tmp);
+    this.capacity = tmp.capacity;
+    console.log(this.capacity);
   }
 
   onDateChange(date: string) {
@@ -79,8 +110,27 @@ export class OfferComponent implements OnInit {
     this.userDateStr = date;
   }
 
-  checkTermin() {
-    this.ifFreeTermin = true;
+  async checkTermin() {
+    let newDate = this.convertDate(this.reservationDateStr);
+    console.log(newDate);
+    let start = this.addHoursToDate(newDate, this.userReservationHoursStart);
+    let end = this.addHoursToDate(newDate, this.userReservationHoursEnd);
+
+    try {
+      const data = await this.db.checkIfFreeDate(
+        this.selectedGameId,
+        start,
+        end
+      );
+      const res = Object.values(data)[0];
+      if (res) {
+        this.ifFreeTermin = true;
+      } else {
+        this.ifFreeTermin = false;
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   convertDate(dateString: string) {
@@ -136,8 +186,10 @@ export class OfferComponent implements OnInit {
   makeReservation() {
     console.log(this.userDate);
     let newDate = this.convertDate(this.userDate);
-    console.log(this.userReservationHoursStart);
-    console.log(this.userReservationHoursEnd);
+    let tab = [this.selectedTableId];
+    console.log(tab);
+    console.log(this.capacity);
+    console.log(this.dishes);
     if (
       !this.checkTimeRange(
         this.userReservationHoursStart,
@@ -150,6 +202,24 @@ export class OfferComponent implements OnInit {
     let end = this.addHoursToDate(newDate, this.userReservationHoursEnd);
     console.log(this.userEmail);
     console.log(this.selectedGameId);
-    //tutaj wołam dodaj rezerwację z tymi danymi którymi mam i essa
+
+    if (
+      typeof newDate !== typeof '' ||
+      typeof start !== typeof '' ||
+      typeof end !== typeof '' ||
+      typeof this.userEmail !== typeof '' ||
+      typeof this.selectedGameId !== typeof ''
+    ) {
+      throw console.error('Data is not correctly provided!');
+    }
+    this.db.createReservationsWithEmail(
+      this.userEmail,
+      this.selectedGameId,
+      start,
+      end,
+      this.dishes,
+      tab,
+      this.capacity
+    );
   }
 }

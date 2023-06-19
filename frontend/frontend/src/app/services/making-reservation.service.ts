@@ -75,12 +75,41 @@ export class MakingReservationService {
     }
   }
 
-  checkIfFreeDate(gameId: string, startDate: string, endDate: string) {
+  async checkIfFreeDate(
+    gameId: string,
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let params = { gameId, startDate, endDate };
-    return this.http.get<any[]>(this.baseUrl + '/check_if_free_date/', {
-      headers,
-      params,
+
+    const response = await this.http
+      .get<any[]>(this.baseUrl + '/check_if_free_date/', {
+        headers,
+        params,
+      })
+      .toPromise();
+
+    return response;
+  }
+
+  createReservationsWithEmail(
+    email: any,
+    gameId: any,
+    startDate: any,
+    endDate: any,
+    dishes: any,
+    tables: any,
+    peopleCount: any
+  ) {
+    return this.http.post<any>(this.baseUrl + '/create_reservation/', {
+      email: email,
+      gameId: gameId,
+      startDate: startDate,
+      endDate: endDate,
+      dishes: dishes,
+      tables: tables,
+      peopleCount: peopleCount,
     });
   }
 }

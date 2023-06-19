@@ -296,8 +296,10 @@ def find_all_dishes(request):
 
 @csrf_exempt
 def create_reservation(request):
+    print(request)
     if request.method == 'POST':
         data = json.loads(request.body)
+        print(data)
 
         # create a new MongoDB connection
         mongo_db = MongoDB()
@@ -492,17 +494,20 @@ def find_tables_for_game(gameId):
 def check_if_free_date(request):
     if request.method == 'GET':
         date_format = '%Y-%m-%dT%H:%M:%SZ'
-        data = json.loads(request.body)
-        startDate = datetime.strptime(data.pop('startDate'), date_format)
-        endDate = datetime.strptime(data.pop('endDate'), date_format)
-        gameId = data.pop('gameId')
+        gameId = request.GET.get('gameId')
+        startDate = datetime.strptime(request.GET.get('startDate'), date_format)
+        endDate = datetime.strptime(request.GET.get('endDate'), date_format)
+        # data = json.loads(request.body)
+        # startDate = datetime.strptime(data.pop('startDate'), date_format)
+        # endDate = datetime.strptime(data.pop('endDate'), date_format)
+        # gameId = data.pop('gameId')
         tables = find_tables_for_game(gameId)
         for table in tables:
             if table['reservedDates'] != []:
                 for dates in table['reservedDates']:
                     if not (dates['startDate'] >= endDate or dates['endDate'] <= startDate):
-                        return JsonResponse({"error": "You can't reserve during this period of time."})
-        return JsonResponse({"message": "This date is free."})
+                        return JsonResponse({"response": False})
+        return JsonResponse({"response": True})
     else:
         return JsonResponse({"error": "Invalid method"})
 
