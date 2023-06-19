@@ -102,14 +102,23 @@ export class MakingReservationService {
     tables: any,
     peopleCount: any
   ) {
-    return this.http.post<any>(this.baseUrl + '/create_reservation/', {
-      email: email,
-      gameId: gameId,
-      startDate: startDate,
-      endDate: endDate,
-      dishes: dishes,
-      tables: tables,
-      peopleCount: peopleCount,
-    });
+    console.log(email, 'haloooooooooooooooooo');
+    return this.http.post<any>(
+      this.baseUrl + '/create_reservation/',
+      {
+        email: email,
+        gameId: gameId,
+        startDate: startDate,
+        endDate: endDate,
+        dishes: dishes,
+        tables: tables,
+        peopleCount: peopleCount,
+      },
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
   }
 }

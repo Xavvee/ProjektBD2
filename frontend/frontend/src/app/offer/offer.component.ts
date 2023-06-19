@@ -212,14 +212,23 @@ export class OfferComponent implements OnInit {
     ) {
       throw console.error('Data is not correctly provided!');
     }
-    this.db.createReservationsWithEmail(
-      this.userEmail,
-      this.selectedGameId,
-      start,
-      end,
-      this.dishes,
-      tab,
-      this.capacity
-    );
+    this.db
+      .createReservationsWithEmail(
+        this.userEmail,
+        this.selectedGameId,
+        start,
+        end,
+        this.dishes,
+        tab,
+        this.capacity
+      )
+      .subscribe(
+        (res) => {
+          console.log('Response from server: ', res);
+        },
+        (error) => {
+          console.error('Error while making reservation: ', error);
+        }
+      );
   }
 }

@@ -50,8 +50,8 @@
           <ng-container
             *ngIf="table.reservedDates.length > 0; else noReservations"
           >
-            <ul>
-              <li *ngFor="let term of table.reservedDates">
+            <ul *ngFor="let term of table.reservedDates">
+              <li>
                 <ng-container *ngIf="ifReserved(term); else noReservations">
                   od: {{ term.startDate.$date | date : "yyyy-MM-dd HH:mm" }} do:
                   {{ term.endDate.$date | date : "yyyy-MM-dd HH:mm" }}

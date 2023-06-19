@@ -312,8 +312,8 @@ def create_reservation(request):
             return JsonResponse({"error": "Client or game not found"})
 
         # convert string dates into datetime objects
-        start_date = datetime.strptime(data['startDate'], '%Y-%m-%dT%H:%M:%S.%f%z')
-        end_date = datetime.strptime(data['endDate'], '%Y-%m-%dT%H:%M:%S.%f%z')
+        start_date = datetime.strptime(data['startDate'], '%Y-%m-%dT%H:%M:%SZ')
+        end_date = datetime.strptime(data['endDate'], '%Y-%m-%dT%H:%M:%SZ')
         order_date = datetime.now()
         final_price, dish_list = get_price_and_dishes(data['dishes'], mongo_db)
 
