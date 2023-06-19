@@ -574,10 +574,7 @@ def filter_menu_by_dish_type(request):
         dish_type = data.get('dishType')
 
         if dish_type:
-            # create a new MongoDB connection
             mongo_db = MongoDB()
-
-            # Query the dishes from the MongoDB Menu collection
             dishes = mongo_db.find_all('Menu', {'dishType': dish_type})
 
             return JsonResponse({"dishes": json.loads(dumps(dishes))})
