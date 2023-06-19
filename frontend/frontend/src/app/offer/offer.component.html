@@ -1,6 +1,6 @@
 <app-offer-nav-bar></app-offer-nav-bar>
 
-<div class="table-responsive w-80 table-80">
+<div class="table-responsive w-80 table-80 text-center">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -25,7 +25,7 @@
           />
           <button
             class="btn btn-primary"
-            (click)="getFreeDates(dataItem.gameId)"
+            (click)="findFreeTermins(dataItem.gameId)"
           >
             Pokaż terminy
           </button>
@@ -50,8 +50,8 @@
           <ng-container
             *ngIf="table.reservedDates.length > 0; else noReservations"
           >
-            <ul>
-              <li *ngFor="let term of table.reservedDates">
+            <ul *ngFor="let term of table.reservedDates">
+              <li>
                 <ng-container *ngIf="ifReserved(term); else noReservations">
                   od: {{ term.startDate.$date | date : "yyyy-MM-dd HH:mm" }} do:
                   {{ term.endDate.$date | date : "yyyy-MM-dd HH:mm" }}
@@ -64,4 +64,74 @@
       </tr>
     </tbody>
   </table>
+  <div>
+    <h2 class="mt-3">Wybierz grę!</h2>
+    <select
+      class="form-select w-5rem mb-3 mx-auto"
+      [(ngModel)]="selectedGameId"
+      (change)="passTableList()"
+    >
+      <option *ngFor="let game of gameList" [value]="game.gameId">
+        {{ game.gameType }}
+      </option>
+    </select>
+
+    <h2>Wybierz stolik!</h2>
+    <select
+      class="form-select w-5rem mb-3 mx-auto"
+      [(ngModel)]="selectedTableId"
+      (change)="findCapacity()"
+    >
+      <option *ngFor="let table of tablesToSelect" [value]="table.tableId">
+        nr stolika: {{ table.tableId }}, ilość miejsc: {{ table.capacity }}
+      </option>
+    </select>
+    <input
+      class="d-inline-block"
+      type="date"
+      id="potentialTermin"
+      name="potentialTermin"
+      [min]="today | date : 'yyyy-MM-dd'"
+      [max]="maxDate"
+      [(ngModel)]="reservationDateStr"
+      (ngModelChange)="userDateChange($event)"
+    />
+    od:
+    <input
+      class="d-inline-block mx-2"
+      type="time"
+      [(ngModel)]="userReservationHoursStart"
+    />
+
+    do:
+    <input
+      class="d-inline-block mx-2"
+      type="time"
+      [(ngModel)]="userReservationHoursEnd"
+    />
+
+    <button
+      class="m-1 btn btn-light btn-outline-primary text-center d-inline-block"
+      (click)="checkTermin()"
+    >
+      Sprawdź termin
+    </button>
+    <h2 *ngIf="ifFreeTermin == true" class="text-center mt-3">
+      Termin jest wolny!
+    </h2>
+    <h2 *ngIf="ifFreeTermin == false" class="text-center mt-3">
+      Musisz wybrac inny termin, bo ten jest zajęty!
+    </h2>
+  </div>
+  <div class="mt-5">
+    <label for="email">Email: </label>
+    <input id="email" [(ngModel)]="userEmail" type="text" />
+    <button
+      class="m-1 btn btn-light btn-outline-primary text-center d-inline-block"
+      (click)="makeReservation()"
+      [disabled]="ifFreeTermin != true"
+    >
+      Zarezerwuj
+    </button>
+  </div>
 </div>

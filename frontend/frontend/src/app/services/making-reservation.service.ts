@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -55,21 +55,70 @@ export class MakingReservationService {
     });
   }
 
-    getTablesForGame(gameId: string): Observable<any[]> {
+  async getTablesForGame(gameId: string): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const params = new HttpParams().set('gameId', gameId);
-    return this.http.get<any[]>(this.baseUrl + '/display_tables_for_game/', {
-      headers,
-      params,
-    });
+
+    try {
+      const response = await this.http
+        .get<any[]>(this.baseUrl + '/display_tables_for_game/', {
+          headers,
+          params,
+        })
+        .pipe(map((data) => Object.values(data)))
+        .toPromise();
+
+      return response;
+    } catch (error) {
+      // Obsługa błędu
+      throw error;
+    }
   }
 
-  checkIfFreeDate(gameId: string, startDate: string, endDate: string) {
+  async checkIfFreeDate(
+    gameId: string,
+    startDate: string,
+    endDate: string
+  ): Promise<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let params = { gameId, startDate, endDate };
-    return this.http.get<any[]>(this.baseUrl + '/check_if_free_date/', {
-      headers,
-      params,
-    });
+
+    const response = await this.http
+      .get<any[]>(this.baseUrl + '/check_if_free_date/', {
+        headers,
+        params,
+      })
+      .toPromise();
+
+    return response;
+  }
+
+  createReservationsWithEmail(
+    email: any,
+    gameId: any,
+    startDate: any,
+    endDate: any,
+    dishes: any,
+    tables: any,
+    peopleCount: any
+  ) {
+    console.log(email, 'haloooooooooooooooooo');
+    return this.http.post<any>(
+      this.baseUrl + '/create_reservation/',
+      {
+        email: email,
+        gameId: gameId,
+        startDate: startDate,
+        endDate: endDate,
+        dishes: dishes,
+        tables: tables,
+        peopleCount: peopleCount,
+      },
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
   }
 }
