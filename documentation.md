@@ -262,7 +262,7 @@ def delete_game(request):
         return JsonResponse({"error": "Invalid method"})
 ```
 
-- aktualizowanie danych na temat danego klient, gry, dania lub pracownika:
+- aktualizowanie danych na temat danego klienta, gry, dania lub pracownika:
 ``` Python  
 @csrf_exempt
 def update_game(request):
@@ -272,6 +272,18 @@ def update_game(request):
         game_id = data.pop('gameId')
         result = mongo_db.update_one('Games', {'gameId': game_id}, data)
         return JsonResponse({"modified_count": result.modified_count})
+    else:
+        return JsonResponse({"error": "Invalid method"})
+```
+
+- uzyskiwanie wszystkich dań, gier, klientów lub pracowników:
+``` Python
+@csrf_exempt
+def find_all_games(request):
+    if request.method == 'GET':
+        mongo_db = MongoDB()
+        games = mongo_db.find_all('Games')
+        return JsonResponse({"games": json.loads(dumps(games))})
     else:
         return JsonResponse({"error": "Invalid method"})
 ```
